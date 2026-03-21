@@ -1,0 +1,18 @@
+package global.fujitsu.api.entity.model.fee;
+
+import global.fujitsu.api.model.vehicle.VehicleType;
+import lombok.NonNull;
+
+import java.math.BigDecimal;
+
+public record WeatherPhenomenonFeeEntity(
+    @NonNull Long id,
+    @NonNull VehicleType vehicleType,
+    @NonNull String weatherPhenomenon,
+    @NonNull BigDecimal price
+) implements EntityFeeModel {
+
+    public WeatherPhenomenonFeeEntity {
+        vehicleType.validate();
+    }
+}

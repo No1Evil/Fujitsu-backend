@@ -1,6 +1,18 @@
 rootProject.name = "Fujitsu-backend"
-include("persistence-impl")
-include("api-protocol")
-include("api-domain")
-include("api-persistence")
-include("rest-app")
+/** API */
+include(
+    ":api:api-protocol",
+    ":api:api-domain",
+    ":api:api-persistence",
+)
+
+/** Implementations */
+include(
+    ":implementations:persistence-impl",
+    ":implementations:business-logic"
+)
+
+/** Application */
+include(
+    "rest-app"
+)
