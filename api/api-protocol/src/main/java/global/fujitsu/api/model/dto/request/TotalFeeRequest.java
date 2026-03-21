@@ -5,4 +5,5 @@ import global.fujitsu.api.model.vehicle.VehicleType;
 import lombok.NonNull;
 
 public record BaseFeeRequest(@NonNull RegionName regionName, @NonNull VehicleType vehicleType) {
+public record TotalFeeRequest(
 }

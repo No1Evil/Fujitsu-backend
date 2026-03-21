@@ -2,5 +2,5 @@ package global.fujitsu.api.model.dto.response;
 
 import java.math.BigDecimal;
 
-public record BaseFeeResponse(BigDecimal fee) {
+public record TotalFeeResponse(BigDecimal fee) {
 }
