@@ -6,6 +6,10 @@ import lombok.NonNull;
 
 public record Region(@NonNull RegionName name, @NonNull String wmoCode) implements EntityModel {
     public Region {
+    @NonNull Long id,
+    @NonNull RegionName name,
+    @NonNull String wmoCode
+) implements EntityModel {
         if (wmoCode.isBlank()){
             throw new IllegalArgumentException("WMO code cannot be null");
         }

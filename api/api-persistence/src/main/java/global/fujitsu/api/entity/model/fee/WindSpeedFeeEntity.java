@@ -5,13 +5,14 @@ import lombok.NonNull;
 
 import java.math.BigDecimal;
 
-public record WeatherPhenomenonFee(
+public record WindSpeedFee(
+    @NonNull Long id,
     @NonNull VehicleType vehicleType,
-    @NonNull String weatherPhenomenon,
-    @NonNull BigDecimal price
+    @NonNull BigDecimal minWindSpeed,
+    @NonNull BigDecimal maxWindSpeed
 ) implements EntityFeeModel {
 
-    public WeatherPhenomenonFee{
+    public WindSpeedFee{
         vehicleType.validate();
     }
 }

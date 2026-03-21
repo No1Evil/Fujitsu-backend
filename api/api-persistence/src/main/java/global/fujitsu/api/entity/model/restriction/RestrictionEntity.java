@@ -7,6 +7,7 @@ import lombok.NonNull;
 import java.math.BigDecimal;
 
 public record Restriction(
+    @NonNull Long id,
     @NonNull VehicleType vehicleType,
     @NonNull String paramName,
     @NonNull BigDecimal minValue,
