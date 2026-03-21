@@ -1,6 +1,6 @@
 package global.fujitsu.api.repository;
 
-import global.fujitsu.api.model.entity.EntityModel;
+import global.fujitsu.api.entity.model.EntityModel;
 import lombok.NonNull;
 
 import java.util.List;

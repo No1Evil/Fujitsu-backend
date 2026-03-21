@@ -1,6 +1,6 @@
-package global.fujitsu.api.model.entity.vehicle;
+package global.fujitsu.api.entity.model.vehicle;
 
-import global.fujitsu.api.model.entity.EntityModel;
+import global.fujitsu.api.entity.model.EntityModel;
 
 public enum VehicleType implements EntityModel {
     UNSPECIFIED,

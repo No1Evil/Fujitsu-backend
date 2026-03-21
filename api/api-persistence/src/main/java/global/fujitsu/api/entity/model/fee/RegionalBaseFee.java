@@ -1,7 +1,7 @@
-package global.fujitsu.api.model.entity.fee;
+package global.fujitsu.api.entity.model.fee;
 
-import global.fujitsu.api.model.region.RegionName;
-import global.fujitsu.api.model.entity.vehicle.VehicleType;
+import global.fujitsu.api.entity.model.vehicle.VehicleType;
+import global.fujitsu.api.entity.region.RegionName;
 import lombok.NonNull;
 
 import java.math.BigDecimal;

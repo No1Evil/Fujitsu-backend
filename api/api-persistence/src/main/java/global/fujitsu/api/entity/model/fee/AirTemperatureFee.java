@@ -1,4 +1,4 @@
-package global.fujitsu.api.model.entity.fee;
+package global.fujitsu.api.entity.model.fee;
 
 import lombok.NonNull;
 

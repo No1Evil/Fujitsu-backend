@@ -1,7 +1,7 @@
-package global.fujitsu.api.model.entity.measurement;
+package global.fujitsu.api.entity.model.measurement;
 
-import global.fujitsu.api.model.entity.EntityModel;
-import global.fujitsu.api.model.region.RegionName;
+import global.fujitsu.api.entity.model.EntityModel;
+import global.fujitsu.api.entity.region.RegionName;
 import lombok.NonNull;
 
 import java.math.BigDecimal;

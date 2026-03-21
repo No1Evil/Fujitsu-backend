@@ -1,4 +1,4 @@
-package global.fujitsu.api.model.region;
+package global.fujitsu.api.entity.region;
 
 public record WmoCode(String value) {
     public WmoCode{

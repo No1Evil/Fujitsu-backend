@@ -1,6 +1,6 @@
 package global.fujitsu.api.repository.fee;
 
-import global.fujitsu.api.model.entity.fee.AirTemperatureFee;
+import global.fujitsu.api.entity.model.fee.AirTemperatureFee;
 import lombok.NonNull;
 
 import java.math.BigDecimal;

@@ -1,5 +1,4 @@
-package global.fujitsu.api.model.region;
-
+package global.fujitsu.api.entity.region;
 
 import lombok.NonNull;
 
