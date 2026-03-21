@@ -10,5 +10,5 @@ public interface Repository<E extends EntityModel> {
     Optional<E> findById(@NonNull Long id);
     List<E> findAll();
     Long save(E entity);
-    boolean delete(E entity);
+    boolean delete(@NonNull Long id);
 }
