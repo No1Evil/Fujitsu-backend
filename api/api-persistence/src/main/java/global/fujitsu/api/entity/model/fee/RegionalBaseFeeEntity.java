@@ -6,14 +6,14 @@ import lombok.NonNull;
 
 import java.math.BigDecimal;
 
-public record RegionalBaseFee(
+public record RegionalBaseFeeEntity(
     @NonNull Long id,
     @NonNull RegionName regionName,
     @NonNull VehicleType vehicleType,
     @NonNull BigDecimal fee
 ) implements EntityFeeModel {
 
-    public RegionalBaseFee{
+    public RegionalBaseFeeEntity {
         vehicleType.validate();
     }
 }

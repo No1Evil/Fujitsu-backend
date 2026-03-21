@@ -4,12 +4,12 @@ import global.fujitsu.api.entity.model.EntityModel;
 import global.fujitsu.api.model.region.RegionName;
 import lombok.NonNull;
 
-public record Region(@NonNull RegionName name, @NonNull String wmoCode) implements EntityModel {
-    public Region {
+public record RegionEntity(
     @NonNull Long id,
     @NonNull RegionName name,
     @NonNull String wmoCode
 ) implements EntityModel {
+    public RegionEntity {
         if (wmoCode.isBlank()){
             throw new IllegalArgumentException("WMO code cannot be null");
         }
