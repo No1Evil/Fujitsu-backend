@@ -15,6 +15,8 @@
 - api-protocol
 - persistence-impl
 - rest-app
+- Designed the Entity Relation model
+- Filled docs(visualization) with Entity Relation Model
 
 ### Changed
 
