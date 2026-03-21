@@ -1,10 +1,18 @@
 rootProject.name = "Fujitsu-backend"
+/** API */
 include(
     ":api:api-protocol",
     ":api:api-domain",
     ":api:api-persistence",
 )
+
+/** Implementations */
 include(
-    "persistence-impl",
+    ":implementations:persistence-impl",
+    ":implementations:business-logic"
+)
+
+/** Application */
+include(
     "rest-app"
 )

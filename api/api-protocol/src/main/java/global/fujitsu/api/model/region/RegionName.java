@@ -1,6 +1,5 @@
 package global.fujitsu.api.model.region;
 
-
 import lombok.NonNull;
 
 public record RegionName(@NonNull String value) {
