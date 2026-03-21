@@ -6,7 +6,7 @@ import global.fujitsu.api.model.region.WmoCode;
 import lombok.NonNull;
 
 public record RegionEntity(
-    @NonNull Long id,
+    Long id,
     @NonNull RegionName name,
     @NonNull WmoCode wmoCode
 ) implements EntityModel {

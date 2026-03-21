@@ -9,7 +9,7 @@ import java.time.Instant;
 
 /** @param weatherPhenomenon weather type */
 public record MeasurementEntity(
-    @NonNull Long id,
+    Long id,
     @NonNull RegionName regionName,
     @NonNull BigDecimal temperature,
     @NonNull BigDecimal windSpeed,

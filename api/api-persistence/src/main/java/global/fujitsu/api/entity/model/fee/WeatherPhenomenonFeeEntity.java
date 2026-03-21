@@ -6,7 +6,7 @@ import lombok.NonNull;
 import java.math.BigDecimal;
 
 public record WeatherPhenomenonFeeEntity(
-    @NonNull Long id,
+    Long id,
     @NonNull VehicleType vehicleType,
     @NonNull String weatherPhenomenon,
     @NonNull BigDecimal price
