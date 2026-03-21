@@ -10,6 +10,7 @@ public record RegionalBaseFeeResponse(
     @NonNull Long id,
     @NonNull RegionName regionName,
     @NonNull VehicleType vehicleType,
-    @NonNull BigDecimal fee
+    @NonNull BigDecimal fee,
+    @NonNull Boolean isPermitted
 ) implements GetResponse {
 }

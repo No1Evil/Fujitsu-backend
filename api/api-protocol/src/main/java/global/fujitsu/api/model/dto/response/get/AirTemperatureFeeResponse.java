@@ -8,6 +8,7 @@ public record AirTemperatureFeeResponse(
     @NonNull Long id,
     @NonNull BigDecimal minTemperature,
     @NonNull BigDecimal maxTemperature,
-    @NonNull BigDecimal fee
+    @NonNull BigDecimal fee,
+    @NonNull Boolean isAllowed
 ) implements GetResponse {
 }

@@ -8,6 +8,8 @@ import java.math.BigDecimal;
 public record CreateWindSpeedFeeRequest(
     @NonNull VehicleType vehicleType,
     @NonNull BigDecimal minWindSpeed,
-    @NonNull BigDecimal maxWindSpeed
+    @NonNull BigDecimal maxWindSpeed,
+    @NonNull BigDecimal fee,
+    @NonNull Boolean isAllowed
 ) implements CreateRequest {
 }

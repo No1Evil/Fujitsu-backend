@@ -9,13 +9,13 @@ import java.util.Optional;
 
 public interface BaseService<GET_RESPONSE extends GetResponse, CREATE_REQUEST extends CreateRequest> {
     /** {@return created entity id} */
-    Long create(CREATE_REQUEST request);
+    Long create(@NonNull CREATE_REQUEST request);
 
     /** {@return is deleted} */
     boolean delete(@NonNull Long id);
 
     /** {@return found entity response} */
-    Optional<GET_RESPONSE> findById(Long id);
+    GET_RESPONSE findById(@NonNull Long id);
 
     /** {@return list of entity response} */
     List<GET_RESPONSE> findAll();

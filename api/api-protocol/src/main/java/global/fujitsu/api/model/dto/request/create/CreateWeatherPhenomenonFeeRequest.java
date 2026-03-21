@@ -8,6 +8,7 @@ import java.math.BigDecimal;
 public record CreateWeatherPhenomenonFeeRequest(
     @NonNull VehicleType vehicleType,
     @NonNull String weatherPhenomenon,
-    @NonNull BigDecimal price
+    @NonNull BigDecimal price,
+    @NonNull Boolean isAllowed
 ) implements CreateRequest {
 }

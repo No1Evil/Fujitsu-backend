@@ -9,6 +9,7 @@ public record WeatherPhenomenonFeeResponse(
     @NonNull Long id,
     @NonNull VehicleType vehicleType,
     @NonNull String weatherPhenomenon,
-    @NonNull BigDecimal price
+    @NonNull BigDecimal price,
+    @NonNull Boolean isAllowed
 ) implements GetResponse {
 }

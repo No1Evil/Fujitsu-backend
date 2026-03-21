@@ -9,6 +9,8 @@ public record WindSpeedFeeResponse(
     @NonNull Long id,
     @NonNull VehicleType vehicleType,
     @NonNull BigDecimal minWindSpeed,
-    @NonNull BigDecimal maxWindSpeed
+    @NonNull BigDecimal maxWindSpeed,
+    @NonNull BigDecimal fee,
+    @NonNull Boolean isAllowed
 ) implements GetResponse {
 }

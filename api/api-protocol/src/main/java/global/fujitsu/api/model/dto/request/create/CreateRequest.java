@@ -1,4 +1,6 @@
 package global.fujitsu.api.model.dto.request.create;
 
-public interface CreateRequest {
+import global.fujitsu.api.model.dto.request.Request;
+
+public interface CreateRequest extends Request {
 }

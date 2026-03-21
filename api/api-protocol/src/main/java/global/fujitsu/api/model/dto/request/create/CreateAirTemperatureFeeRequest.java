@@ -7,6 +7,7 @@ import java.math.BigDecimal;
 public record CreateAirTemperatureFeeRequest(
     @NonNull BigDecimal minTemperature,
     @NonNull BigDecimal maxTemperature,
-    @NonNull BigDecimal fee
+    @NonNull BigDecimal fee,
+    @NonNull Boolean isAllowed
 ) implements CreateRequest {
 }

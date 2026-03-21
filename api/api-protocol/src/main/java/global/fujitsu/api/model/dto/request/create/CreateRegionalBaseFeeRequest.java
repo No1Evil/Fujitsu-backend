@@ -9,6 +9,7 @@ import java.math.BigDecimal;
 public record CreateRegionalBaseFeeRequest(
     @NonNull RegionName regionName,
     @NonNull VehicleType vehicleType,
-    @NonNull BigDecimal fee
+    @NonNull BigDecimal fee,
+    @NonNull Boolean isAllowed
 ) implements CreateRequest {
 }
