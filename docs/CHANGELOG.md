@@ -10,6 +10,11 @@
 - Added sub-docs: `CHANGELOG.MD`, `VISUALIZATION.MD`, `WORKFLOW.MD`
 - Configured root build.gradle for multi-module project
 - MIT license
+- api-domain
+- api-persistence
+- api-protocol
+- persistence-impl
+- rest-app
 
 ### Changed
 
