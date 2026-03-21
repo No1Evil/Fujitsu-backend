@@ -1,4 +1,4 @@
-package global.fujitsu.api.domain.dto.request.create;
+package global.fujitsu.api.model.dto.request.create;
 
 import lombok.NonNull;
 

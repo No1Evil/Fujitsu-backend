@@ -1,4 +1,4 @@
-package global.fujitsu.api.domain.dto.response;
+package global.fujitsu.api.model.dto.response;
 
 import java.math.BigDecimal;
 

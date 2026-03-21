@@ -1,6 +1,6 @@
-package global.fujitsu.api.domain.dto.response.get;
+package global.fujitsu.api.model.dto.response.get;
 
-import global.fujitsu.api.model.entity.vehicle.VehicleType;
+import global.fujitsu.api.model.vehicle.VehicleType;
 import lombok.NonNull;
 
 import java.math.BigDecimal;

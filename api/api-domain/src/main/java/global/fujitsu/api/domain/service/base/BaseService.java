@@ -1,7 +1,7 @@
 package global.fujitsu.api.domain.service.base;
 
-import global.fujitsu.api.domain.dto.request.create.CreateRequest;
-import global.fujitsu.api.domain.dto.response.get.GetResponse;
+import global.fujitsu.api.model.dto.request.create.CreateRequest;
+import global.fujitsu.api.model.dto.response.get.GetResponse;
 import lombok.NonNull;
 
 import java.util.List;

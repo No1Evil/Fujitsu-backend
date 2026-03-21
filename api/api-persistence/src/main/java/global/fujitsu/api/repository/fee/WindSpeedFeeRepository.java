@@ -1,7 +1,7 @@
 package global.fujitsu.api.repository.fee;
 
 import global.fujitsu.api.entity.model.fee.WindSpeedFee;
-import global.fujitsu.api.entity.model.vehicle.VehicleType;
+import global.fujitsu.api.model.vehicle.VehicleType;
 import lombok.NonNull;
 
 import java.math.BigDecimal;

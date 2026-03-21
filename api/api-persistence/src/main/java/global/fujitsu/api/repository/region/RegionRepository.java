@@ -1,7 +1,7 @@
 package global.fujitsu.api.repository.region;
 
-import global.fujitsu.api.model.entity.region.Region;
-import global.fujitsu.api.entity.region.RegionName;
+import global.fujitsu.api.entity.model.region.Region;
+import global.fujitsu.api.model.region.RegionName;
 import global.fujitsu.api.repository.Repository;
 import lombok.NonNull;
 
