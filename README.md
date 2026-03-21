@@ -25,5 +25,10 @@ conditions.
 
 ## 
 
----
 # Fast start
+
+---
+## Authors
+- Fjodor Tšumakov
+## License
+[MIT license](LICENSE)
