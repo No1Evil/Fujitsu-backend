@@ -5,9 +5,14 @@ include(
     ":api:api-domain",
     ":api:api-persistence",
 )
+
+/** Implementations */
 include(
-    "persistence-impl",
     ":implementations:persistence-impl",
     ":implementations:business-logic"
+)
+
+/** Application */
+include(
     "rest-app"
 )
