@@ -1,6 +1,5 @@
 package global.fujitsu.api.model.entity.fee;
 
-import global.fujitsu.api.model.entity.EntityModel;
 import global.fujitsu.api.model.entity.vehicle.VehicleType;
 import lombok.NonNull;
 
@@ -10,7 +9,7 @@ public record WeatherPhenomenonFee(
     @NonNull VehicleType vehicleType,
     @NonNull String weatherPhenomenon,
     @NonNull BigDecimal price
-) implements EntityModel {
+) implements EntityFeeModel {
 
     public WeatherPhenomenonFee{
         vehicleType.validate();
