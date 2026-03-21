@@ -9,6 +9,6 @@ import java.util.Optional;
 public interface Repository<E extends EntityModel> {
     Optional<E> findById(@NonNull Long id);
     List<E> findAll();
-    void save(E entity);
+    Long save(E entity);
     void delete(E entity);
 }
