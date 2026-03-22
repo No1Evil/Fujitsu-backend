@@ -7,6 +7,7 @@ import org.jetbrains.annotations.Nullable;
 
 public record VehicleTypeEntity(
     @Nullable Long id,
-    @NonNull VehicleType vehicleType
+    @NonNull VehicleType type
 ) implements EntityModel {
+
 }
