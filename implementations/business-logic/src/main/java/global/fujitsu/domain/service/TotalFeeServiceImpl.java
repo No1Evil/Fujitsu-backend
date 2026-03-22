@@ -4,14 +4,12 @@ import global.fujitsu.api.domain.exceptions.MeasurementNotFoundException;
 import global.fujitsu.api.domain.service.TotalFeeService;
 import global.fujitsu.api.model.dto.request.TotalFeeRequest;
 import global.fujitsu.api.model.dto.response.TotalFeeResponse;
-import global.fujitsu.api.model.fee.FeeResult;
 import global.fujitsu.api.repository.measurement.MeasurementRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
-import java.util.List;
 
 @Service
 @RequiredArgsConstructor
