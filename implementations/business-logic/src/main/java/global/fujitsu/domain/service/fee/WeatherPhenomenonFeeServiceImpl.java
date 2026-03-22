@@ -2,8 +2,9 @@ package global.fujitsu.domain.service.fee;
 
 import global.fujitsu.api.domain.exceptions.FeeNotFoundException;
 import global.fujitsu.api.domain.exceptions.RestrictedConditionException;
-import global.fujitsu.api.domain.service.WeatherPhenomenonFeeService;
+import global.fujitsu.api.domain.service.fee.WeatherPhenomenonFeeService;
 import global.fujitsu.api.model.dto.request.create.CreateWeatherPhenomenonFeeRequest;
+import global.fujitsu.api.model.dto.request.get.GetWeatherPhenomenonFeeRequest;
 import global.fujitsu.api.model.dto.response.get.WeatherPhenomenonFeeResponse;
 import global.fujitsu.api.model.fee.FeeResult;
 import global.fujitsu.api.model.vehicle.VehicleType;
@@ -15,22 +16,23 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
-@Transactional
+@Transactional(readOnly = true)
 @RequiredArgsConstructor
 public class WeatherPhenomenonFeeServiceImpl implements WeatherPhenomenonFeeService {
     private final WeatherPhenomenonFeeRepository repository;
     private final WeatherPhenomenonFeeMapper mapper;
 
     @Override
+    @Transactional
     public Long create(@NonNull CreateWeatherPhenomenonFeeRequest request) {
         var entity = mapper.toEntity(request);
         return repository.save(entity);
     }
 
     @Override
+    @Transactional
     public boolean delete(@NonNull Long id) {
         return repository.delete(id);
     }
@@ -48,19 +50,19 @@ public class WeatherPhenomenonFeeServiceImpl implements WeatherPhenomenonFeeServ
     }
 
     @Override
-    public FeeResult getFee(@NonNull VehicleType vehicleType, @NonNull String weatherPhenomenon) {
-        var feeResult = repository.findBaseFee(vehicleType, weatherPhenomenon)
+    public FeeResult getBaseFee(GetWeatherPhenomenonFeeRequest request) {
+        var feeResult = repository.findBaseFee(request)
             .orElseThrow(() -> new FeeNotFoundException(
-                "Weather phenomenon fee for vehicle {} and weather phenomenon {} not found",
-                vehicleType,
-                weatherPhenomenon
+                "Weather phenomenon fee for vehicle with id {} and weather phenomenon {} not found",
+                request.vehicleTypeId(),
+                request.weatherPhenomenon()
             ));
 
         if (!feeResult.isAllowed()){
             throw new RestrictedConditionException(
-                "The vehicle {} is not allowed during weather phenomenon {}",
-                vehicleType,
-                weatherPhenomenon
+                "The vehicle with id {} is not allowed during weather phenomenon {}",
+                request.vehicleTypeId(),
+                request.weatherPhenomenon()
             );
         }
 
