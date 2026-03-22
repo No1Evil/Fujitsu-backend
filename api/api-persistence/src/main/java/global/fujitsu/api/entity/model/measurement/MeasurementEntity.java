@@ -9,7 +9,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.Instant;
 
-/** @param weatherPhenomenon weather type */
+/** @param weatherPhenomenon weather value */
 public record MeasurementEntity(
     @Nullable Long id,
     @NonNull Long regionId,
