@@ -6,5 +6,5 @@ import lombok.NonNull;
 public record GetWeatherPhenomenonFeeRequest(
     @NonNull Long vehicleTypeId,
     @NonNull String weatherPhenomenon
-    ) implements GetFeeRequest {
+) implements GetFeeRequest {
 }
