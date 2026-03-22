@@ -1,8 +1,21 @@
 # Changelog
 
 ---
-## [Unreleased] - 22.03.2026
-- Changed entity relation model visualization
+## [Unreleased] - 22.03.2026 - 23.03.2026
+- 
+- Implemented GetFeeRequests and response for them is FeeResult.
+- Implement BaseFeeService with returning FeeResult method getBaseFee(request) to prevent DRY.
+- Implemented schema.sql and some scripts for finding fees.
+- Implemented some Dao objects, mappers for requests to entity and reversed.
+- Implemented SqlConstants to simplify writing basic scripts.
+- Implementation of persistence-api in persistence-impl.
+
+## Changes
+- Instead of using VehicleType in requests switched to vehicleTypeId
+- Switched from VehicleType enum to VehicleType record.
+- Removed unnecessary sealed parameter in interface. (thought that'd be cool)
+- Some RegionalBasedFee classes had names RegionalBaseFee.
+- Changed entity relation model visualization.
 
 ---
 ## [Unreleased] - 21.03.2026
