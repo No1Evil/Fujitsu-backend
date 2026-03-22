@@ -4,6 +4,8 @@ import global.fujitsu.api.entity.model.vehicle.VehicleTypeEntity;
 import global.fujitsu.api.repository.Repository;
 import lombok.NonNull;
 
+import java.util.Optional;
+
 public interface VehicleTypeRepository extends Repository<VehicleTypeEntity> {
-    VehicleTypeEntity findByName(@NonNull String name);
+    Optional<VehicleTypeEntity> findByName(@NonNull String name);
 }
