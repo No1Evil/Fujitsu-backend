@@ -25,15 +25,4 @@ public record MeasurementEntity(
             throw new IllegalArgumentException("Weather phenomenon cannot be empty");
         }
     }
-
-    public static MeasurementEntity fromResultSet(ResultSet rs) throws SQLException {
-        return new MeasurementEntity(
-            rs.getLong("id"),
-            rs.getLong("region_id"),
-            rs.getBigDecimal("air_temperature"),
-            rs.getBigDecimal("wind_speed"),
-            rs.getString("weather_phenomenon"),
-            rs.getTimestamp("measured_at").toInstant()
-        );
-    }
 }
