@@ -7,6 +7,7 @@ import global.fujitsu.api.repository.base.FeeRepository;
 import lombok.NonNull;
 import org.springframework.jdbc.core.JdbcTemplate;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -25,9 +26,10 @@ public abstract class BaseJdbcFeeBasedDao<E extends EntityFeeModel, G extends Ge
      * @param columnNames columns {@code fee} and {@code is_allowed} are included
      */
     public BaseJdbcFeeBasedDao(@NonNull JdbcTemplate jdbcTemplate, @NonNull String tableName, @NonNull List<String> columnNames, @NonNull Class<E> entityClass) {
-        columnNames.add("fee");
-        columnNames.add("is_allowed");
-        super(jdbcTemplate, tableName, columnNames, entityClass);
+        List<String> mutableList = new ArrayList<>(columnNames);
+        mutableList.add("fee");
+        mutableList.add("is_allowed");
+        super(jdbcTemplate, tableName, mutableList, entityClass);
     }
 
     protected Optional<FeeResult> findBaseFee(String sql, Object... args) {
