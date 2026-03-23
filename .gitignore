@@ -29,3 +29,8 @@ bin/
 
 ### System Files ###
 .DS_Store
+
+### Database
+*.mv.db
+*.trace.db
+*.lock.db
