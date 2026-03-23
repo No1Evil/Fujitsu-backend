@@ -7,7 +7,6 @@ import global.fujitsu.api.model.dto.request.create.CreateWindSpeedFeeRequest;
 import global.fujitsu.api.model.dto.request.get.GetWindSpeedFeeRequest;
 import global.fujitsu.api.model.dto.response.get.WindSpeedFeeResponse;
 import global.fujitsu.api.model.fee.FeeResult;
-import global.fujitsu.api.model.vehicle.VehicleType;
 import global.fujitsu.api.repository.fee.WindSpeedFeeRepository;
 import global.fujitsu.domain.mapper.impl.WindSpeedFeeMapper;
 import lombok.NonNull;
@@ -15,7 +14,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.math.BigDecimal;
 import java.util.List;
 
 @Service

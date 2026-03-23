@@ -7,7 +7,6 @@ import global.fujitsu.api.model.dto.request.create.CreateWeatherPhenomenonFeeReq
 import global.fujitsu.api.model.dto.request.get.GetWeatherPhenomenonFeeRequest;
 import global.fujitsu.api.model.dto.response.get.WeatherPhenomenonFeeResponse;
 import global.fujitsu.api.model.fee.FeeResult;
-import global.fujitsu.api.model.vehicle.VehicleType;
 import global.fujitsu.api.repository.fee.WeatherPhenomenonFeeRepository;
 import global.fujitsu.domain.mapper.impl.WeatherPhenomenonFeeMapper;
 import lombok.NonNull;
