@@ -30,7 +30,7 @@ public final class JdbcWindSpeedFeeDao
         super(
             jdbcTemplate,
             "wind_speed_fees",
-            List.of("vehicle_type_id", "min_wind_speed", "max_wind_speed", "fee", "is_allowed"),
+            List.of("vehicle_type_id", "min_wind_speed", "max_wind_speed"),
             WindSpeedFeeEntity.class
         );
         this.FIND_WIND_SPEED_FEE_QUERY = loadScript(findWindSpeedFeeScript);
