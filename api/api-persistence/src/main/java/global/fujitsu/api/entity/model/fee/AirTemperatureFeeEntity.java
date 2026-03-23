@@ -7,6 +7,7 @@ import java.math.BigDecimal;
 
 public record AirTemperatureFeeEntity(
     @Nullable Long id,
+    @Nullable Long vehicleTypeId,
     @NonNull BigDecimal minTemperature,
     @NonNull BigDecimal maxTemperature,
     @NonNull BigDecimal fee,

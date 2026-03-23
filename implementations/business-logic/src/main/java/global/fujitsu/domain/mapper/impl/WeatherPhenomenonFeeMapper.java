@@ -16,9 +16,9 @@ public final class WeatherPhenomenonFeeMapper
     public WeatherPhenomenonFeeResponse toResponse(WeatherPhenomenonFeeEntity entityModel) {
         return new WeatherPhenomenonFeeResponse(
             Objects.requireNonNull(entityModel.id()),
-            entityModel.vehicleType(),
+            entityModel.vehicleTypeId(),
             entityModel.weatherPhenomenon(),
-            entityModel.price(),
+            entityModel.fee(),
             entityModel.isAllowed()
         );
     }
@@ -27,10 +27,10 @@ public final class WeatherPhenomenonFeeMapper
     public WeatherPhenomenonFeeEntity toEntity(CreateWeatherPhenomenonFeeRequest request) {
         return new WeatherPhenomenonFeeEntity(
             null,
-            request.vehicleType(),
+            request.vehicleTypeId(),
             request.weatherPhenomenon(),
             request.price(),
-            request.isPermitted()
+            request.isAllowed()
         );
     }
 }

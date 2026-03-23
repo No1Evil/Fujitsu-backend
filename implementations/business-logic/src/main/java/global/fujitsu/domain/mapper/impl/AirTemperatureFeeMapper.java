@@ -15,6 +15,7 @@ public final class AirTemperatureFeeMapper
     public AirTemperatureFeeResponse toResponse(AirTemperatureFeeEntity entity){
         return new AirTemperatureFeeResponse(
             Objects.requireNonNull(entity.id()),
+            entity.vehicleTypeId(),
             entity.minTemperature(),
             entity.maxTemperature(),
             entity.fee(),
@@ -26,6 +27,7 @@ public final class AirTemperatureFeeMapper
     public AirTemperatureFeeEntity toEntity(CreateAirTemperatureFeeRequest request) {
         return new AirTemperatureFeeEntity(
             null,
+            request.vehicleTypeId(),
             request.minTemperature(),
             request.maxTemperature(),
             request.fee(),

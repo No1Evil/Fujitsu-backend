@@ -1,0 +1,36 @@
+package global.fujitsu.domain.mapper.impl;
+
+import global.fujitsu.api.entity.model.fee.RegionalBasedFeeEntity;
+import global.fujitsu.api.model.dto.request.create.CreateRegionalBasedFeeRequest;
+import global.fujitsu.api.model.dto.response.get.RegionalBasedFeeResponse;
+import global.fujitsu.domain.mapper.RequestMapper;
+import global.fujitsu.domain.mapper.ResponseMapper;
+
+import java.util.Objects;
+
+public final class RegionalBasedFeeMapper
+    implements ResponseMapper<RegionalBasedFeeEntity, RegionalBasedFeeResponse>,
+    RequestMapper<RegionalBasedFeeEntity, CreateRegionalBasedFeeRequest> {
+
+    @Override
+    public RegionalBasedFeeEntity toEntity(CreateRegionalBasedFeeRequest request) {
+        return new RegionalBasedFeeEntity(
+            null,
+            request.regionId(),
+            request.vehicleTypeId(),
+            request.fee(),
+            request.isAllowed()
+        );
+    }
+
+    @Override
+    public RegionalBasedFeeResponse toResponse(RegionalBasedFeeEntity entity) {
+        return new RegionalBasedFeeResponse(
+            Objects.requireNonNull(entity.id()),
+            entity.regionId(),
+            entity.vehicleTypeId(),
+            entity.fee(),
+            entity.isAllowed()
+        );
+    }
+}

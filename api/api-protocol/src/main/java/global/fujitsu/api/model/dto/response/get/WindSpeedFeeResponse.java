@@ -1,13 +1,13 @@
 package global.fujitsu.api.model.dto.response.get;
 
-import global.fujitsu.api.model.vehicle.VehicleType;
+import global.fujitsu.api.model.dto.response.base.GetResponse;
 import lombok.NonNull;
 
 import java.math.BigDecimal;
 
 public record WindSpeedFeeResponse(
     @NonNull Long id,
-    @NonNull VehicleType vehicleType,
+    @NonNull Long vehicleTypeId,
     @NonNull BigDecimal minWindSpeed,
     @NonNull BigDecimal maxWindSpeed,
     @NonNull BigDecimal fee,

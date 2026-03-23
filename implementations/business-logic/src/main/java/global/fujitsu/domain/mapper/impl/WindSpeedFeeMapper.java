@@ -16,7 +16,7 @@ public final class WindSpeedFeeMapper
     public WindSpeedFeeResponse toResponse(WindSpeedFeeEntity model) {
         return new WindSpeedFeeResponse(
             Objects.requireNonNull(model.id()),
-            model.vehicleType(),
+            model.vehicleTypeId(),
             model.minWindSpeed(),
             model.maxWindSpeed(),
             model.fee(),
@@ -28,7 +28,7 @@ public final class WindSpeedFeeMapper
     public WindSpeedFeeEntity toEntity(CreateWindSpeedFeeRequest request) {
         return new WindSpeedFeeEntity(
             null,
-            request.vehicleType(),
+            request.vehicleTypeId(),
             request.minWindSpeed(),
             request.maxWindSpeed(),
             request.fee(),
