@@ -9,7 +9,7 @@ import lombok.NonNull;
 import java.util.Optional;
 
 public interface RegionRepository extends Repository<RegionEntity> {
-    Optional<WmoCode> findWmoCodeByRegionName(@NonNull RegionName regionName);
-    
-    Optional<RegionName> findRegionNameByCode(@NonNull WmoCode wmoCode);
+    Optional<RegionEntity> findByName(@NonNull RegionName regionName);
+
+    Optional<RegionEntity> findByWmoCode(@NonNull WmoCode wmoCode);
 }

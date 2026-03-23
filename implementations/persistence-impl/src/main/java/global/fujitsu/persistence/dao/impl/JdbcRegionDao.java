@@ -30,17 +30,17 @@ public final class JdbcRegionDao
     }
 
     @Override
-    public Optional<WmoCode> findWmoCodeByRegionName(@NonNull RegionName regionName) {
-        String sql = SqlConstants.FIND_BY_QUERY("regions", "wmo_code");
+    public Optional<RegionEntity> findByName(@NonNull RegionName regionName) {
+        String sql = SqlConstants.FIND_BY_QUERY("regions", "name");
         return jdbcTemplate.query(sql, mapper, regionName.value())
-            .stream().findFirst().map(RegionEntity::wmoCode);
+            .stream().findFirst();
     }
 
     @Override
-    public Optional<RegionName> findRegionNameByCode(@NonNull WmoCode wmoCode) {
-        String sql = SqlConstants.FIND_BY_QUERY("regions", "name");
+    public Optional<RegionEntity> findByWmoCode(@NonNull WmoCode wmoCode) {
+        String sql = SqlConstants.FIND_BY_QUERY("regions", "wmo_code");
         return jdbcTemplate.query(sql, mapper, wmoCode.value())
-            .stream().findFirst().map(RegionEntity::name);
+            .stream().findFirst();
     }
 
     @Override
