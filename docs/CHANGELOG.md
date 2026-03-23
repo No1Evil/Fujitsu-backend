@@ -53,7 +53,7 @@ that there is no overloaded DRY so that the system stays modular.
     - JdbcMeasurement
     - JdbcRegion
     - JdbcVehicleType
-- Implement BaseFeeService with returning FeeResult method getBaseFee(request) to prevent DRY.
+- Implement BaseFeeService with returning FeeResult method getBaseFee(request) to unify fees under one contract.
 - Implemented schema.sql scripts for finding fees.
 - Implemented some Dao objects, mappers for requests to entity and reversed.
 - Implemented SqlConstants to simplify writing basic scripts.
