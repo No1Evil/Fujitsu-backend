@@ -3,13 +3,12 @@ package global.fujitsu.persistence.dao.impl;
 import global.fujitsu.api.entity.model.measurement.MeasurementEntity;
 import global.fujitsu.api.model.region.RegionName;
 import global.fujitsu.api.repository.measurement.MeasurementRepository;
-import global.fujitsu.persistence.dao.BaseJdbcDao;
+import global.fujitsu.persistence.dao.base.BaseJdbcDao;
 import jakarta.annotation.PostConstruct;
 import lombok.NonNull;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.Resource;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
 import java.io.IOException;
