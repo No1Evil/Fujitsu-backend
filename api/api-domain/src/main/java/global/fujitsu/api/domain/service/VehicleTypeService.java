@@ -11,5 +11,5 @@ public interface VehicleTypeService extends BaseService<
     CreateVehicleTypeRequest
 > {
 
-    VehicleTypeResponse getByName(@NonNull VehicleType vehicleType);
+    VehicleTypeResponse findByName(@NonNull VehicleType vehicleType);
 }
