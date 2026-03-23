@@ -55,7 +55,7 @@ public abstract class BaseJdbcDao<E extends EntityModel> implements Repository<E
     }
 
     protected static String loadScript(Resource resource) throws IOException {
-        log.debug("Executing loading script for {}", resource.getURI());
+        log.debug("Executing loading script for {}", resource.getURL());
         return new String(resource.getInputStream().readAllBytes(), StandardCharsets.UTF_8);
     }
 
