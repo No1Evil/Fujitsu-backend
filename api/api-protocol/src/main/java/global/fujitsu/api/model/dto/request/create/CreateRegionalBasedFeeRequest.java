@@ -5,10 +5,13 @@ import lombok.NonNull;
 
 import java.math.BigDecimal;
 
+/**
+ * Request to create a regional based fee.
+ */
 public record CreateRegionalBasedFeeRequest(
     @NonNull Long regionId,
     @NonNull Long vehicleTypeId,
     @NonNull BigDecimal fee,
-    @NonNull Boolean isAllowed
-) implements CreateRequest {
+    @NonNull Boolean isAllowed)
+    implements CreateRequest {
 }

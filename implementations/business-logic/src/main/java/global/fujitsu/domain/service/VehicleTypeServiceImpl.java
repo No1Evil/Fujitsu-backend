@@ -14,42 +14,44 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
+/** {@inheritDoc} */
 @Service
 @RequiredArgsConstructor
 @Transactional(readOnly = true)
 public class VehicleTypeServiceImpl implements VehicleTypeService {
-    private final VehicleTypeRepository repository;
-    private final VehicleTypeMapper mapper;
 
-    @Override
-    public VehicleTypeResponse findByName(@NonNull VehicleType vehicleType) {
-        var entity = repository.findByTypeName(vehicleType.value())
-            .orElseThrow(() -> new EntityNotFoundException("No such vehicle {} found", vehicleType));
-        return mapper.toResponse(entity);
-    }
+  private final VehicleTypeRepository repository;
+  private final VehicleTypeMapper mapper;
 
-    @Override
-    @Transactional
-    public Long create(@NonNull CreateVehicleTypeRequest request) {
-        return repository.save(mapper.toEntity(request));
-    }
+  @Override
+  public VehicleTypeResponse findByName(@NonNull VehicleType vehicleType) {
+    var entity = repository.findByTypeName(vehicleType.value())
+        .orElseThrow(() -> new EntityNotFoundException("No such vehicle {} found", vehicleType));
+    return mapper.toResponse(entity);
+  }
 
-    @Override
-    @Transactional
-    public boolean delete(@NonNull Long id) {
-        return repository.delete(id);
-    }
+  @Override
+  @Transactional
+  public Long create(@NonNull CreateVehicleTypeRequest request) {
+    return repository.save(mapper.toEntity(request));
+  }
 
-    @Override
-    public VehicleTypeResponse findById(@NonNull Long id) {
-        var entity = repository.findById(id).orElseThrow(
-            () -> new EntityNotFoundException("No such vehicle with id {} found", id)
-        );
-        return mapper.toResponse(entity);
-    }
+  @Override
+  @Transactional
+  public boolean delete(@NonNull Long id) {
+    return repository.delete(id);
+  }
 
-    @Override
-    public List<VehicleTypeResponse> findAll() {
-        return repository.findAll().stream().map(mapper::toResponse).toList();
-    }
+  @Override
+  public VehicleTypeResponse findById(@NonNull Long id) {
+    var entity = repository.findById(id).orElseThrow(
+        () -> new EntityNotFoundException("No such vehicle with id {} found", id)
+    );
+    return mapper.toResponse(entity);
+  }
+
+  @Override
+  public List<VehicleTypeResponse> findAll() {
+    return repository.findAll().stream().map(mapper::toResponse).toList();
+  }
 }

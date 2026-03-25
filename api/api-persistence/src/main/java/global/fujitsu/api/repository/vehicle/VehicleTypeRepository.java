@@ -6,6 +6,9 @@ import lombok.NonNull;
 
 import java.util.Optional;
 
+/** Repository for {@link VehicleTypeEntity} entities. */
 public interface VehicleTypeRepository extends Repository<VehicleTypeEntity> {
-    Optional<VehicleTypeEntity> findByTypeName(@NonNull String name);
+
+  /** Returns {@link VehicleTypeEntity} by name. */
+  Optional<VehicleTypeEntity> findByTypeName(@NonNull String name);
 }

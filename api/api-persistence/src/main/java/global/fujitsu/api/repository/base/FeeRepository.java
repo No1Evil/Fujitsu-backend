@@ -6,7 +6,16 @@ import global.fujitsu.api.model.fee.FeeResult;
 
 import java.util.Optional;
 
-public interface FeeRepository<E extends EntityFeeModel, R extends GetFeeRequest>
+/**
+ * Provides base fee entity repository.
+ *
+ * @param <E> {@link EntityFeeModel}
+ * @param <R> {@link GetFeeRequest}
+ */
+public interface FeeRepository<
+    E extends EntityFeeModel,
+    R extends GetFeeRequest>
     extends Repository<E> {
-    Optional<FeeResult> findBaseFee(R request);
+
+  Optional<FeeResult> findBaseFee(R request);
 }

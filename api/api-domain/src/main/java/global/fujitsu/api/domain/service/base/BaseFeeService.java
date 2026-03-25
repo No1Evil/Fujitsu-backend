@@ -5,12 +5,23 @@ import global.fujitsu.api.model.dto.request.base.GetFeeRequest;
 import global.fujitsu.api.model.dto.response.base.GetResponse;
 import global.fujitsu.api.model.fee.FeeResult;
 
+/**
+ * Provides a base fee service for fee calculations.
+ *
+ * @param <ResponseT> implementation class of {@link GetResponse}
+ * @param <CreateRequestT> implementation class of {@link CreateRequest}
+ * @param <GetRequestT> implementation of {@link GetFeeRequest}
+ */
 public interface BaseFeeService<
-    GET_RESPONSE extends GetResponse,
-    CREATE_REQUEST extends CreateRequest,
-    GET_FEE_REQUEST extends GetFeeRequest
-> extends BaseService<GET_RESPONSE, CREATE_REQUEST> {
+    ResponseT extends GetResponse,
+    CreateRequestT extends CreateRequest,
+    GetRequestT extends GetFeeRequest>
+    extends BaseService<ResponseT, CreateRequestT> {
 
-    /** {@return base fee based on request} */
-    FeeResult getBaseFee(GET_FEE_REQUEST request);
+  /**
+   * Provides the fee based on provided request.
+   *
+   * @return base fee based on request
+   */
+  FeeResult getBaseFee(GetRequestT request);
 }

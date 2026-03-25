@@ -16,55 +16,58 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
+/** {@inheritDoc} */
 @Service
 @Transactional(readOnly = true)
 @RequiredArgsConstructor
 public class WeatherPhenomenonFeeServiceImpl implements WeatherPhenomenonFeeService {
-    private final WeatherPhenomenonFeeRepository repository;
-    private final WeatherPhenomenonFeeMapper mapper;
 
-    @Override
-    @Transactional
-    public Long create(@NonNull CreateWeatherPhenomenonFeeRequest request) {
-        var entity = mapper.toEntity(request);
-        return repository.save(entity);
+  private final WeatherPhenomenonFeeRepository repository;
+  private final WeatherPhenomenonFeeMapper mapper;
+
+  @Override
+  @Transactional
+  public Long create(@NonNull CreateWeatherPhenomenonFeeRequest request) {
+    var entity = mapper.toEntity(request);
+    return repository.save(entity);
+  }
+
+  @Override
+  @Transactional
+  public boolean delete(@NonNull Long id) {
+    return repository.delete(id);
+  }
+
+  @Override
+  public WeatherPhenomenonFeeResponse findById(@NonNull Long id) {
+    var entity = repository.findById(id)
+        .orElseThrow(
+            () -> new FeeNotFoundException("Weather phenomenon fee, with id {}, not found", id));
+    return mapper.toResponse(entity);
+  }
+
+  @Override
+  public List<WeatherPhenomenonFeeResponse> findAll() {
+    return repository.findAll().stream().map(mapper::toResponse).toList();
+  }
+
+  @Override
+  public FeeResult getBaseFee(GetWeatherPhenomenonFeeRequest request) {
+    var feeResult = repository.findBaseFee(request)
+        .orElseThrow(() -> new FeeNotFoundException(
+            "Weather phenomenon fee for vehicle with id {} and weather phenomenon {} not found",
+            request.vehicleTypeId(),
+            request.weatherPhenomenon()
+        ));
+
+    if (!feeResult.isAllowed()) {
+      throw new RestrictedConditionException(
+          "The vehicle with id {} is not allowed during weather phenomenon {}",
+          request.vehicleTypeId(),
+          request.weatherPhenomenon()
+      );
     }
 
-    @Override
-    @Transactional
-    public boolean delete(@NonNull Long id) {
-        return repository.delete(id);
-    }
-
-    @Override
-    public WeatherPhenomenonFeeResponse findById(@NonNull Long id) {
-        var entity = repository.findById(id)
-            .orElseThrow(() -> new FeeNotFoundException("Weather phenomenon fee, with id {}, not found", id));
-        return mapper.toResponse(entity);
-    }
-
-    @Override
-    public List<WeatherPhenomenonFeeResponse> findAll() {
-        return repository.findAll().stream().map(mapper::toResponse).toList();
-    }
-
-    @Override
-    public FeeResult getBaseFee(GetWeatherPhenomenonFeeRequest request) {
-        var feeResult = repository.findBaseFee(request)
-            .orElseThrow(() -> new FeeNotFoundException(
-                "Weather phenomenon fee for vehicle with id {} and weather phenomenon {} not found",
-                request.vehicleTypeId(),
-                request.weatherPhenomenon()
-            ));
-
-        if (!feeResult.isAllowed()){
-            throw new RestrictedConditionException(
-                "The vehicle with id {} is not allowed during weather phenomenon {}",
-                request.vehicleTypeId(),
-                request.weatherPhenomenon()
-            );
-        }
-
-        return feeResult;
-    }
+    return feeResult;
+  }
 }

@@ -16,46 +16,50 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
+/** {@inheritDoc} */
 @Service
 @Transactional(readOnly = true)
 @RequiredArgsConstructor
 public class AirTemperatureFeeServiceImpl implements AirTemperatureFeeService {
-    private final AirTemperatureFeeRepository repository;
-    private final AirTemperatureFeeMapper mapper;
 
-    @Override
-    @Transactional
-    public Long create(@NonNull CreateAirTemperatureFeeRequest request) {
-        return repository.save(mapper.toEntity(request));
+  private final AirTemperatureFeeRepository repository;
+  private final AirTemperatureFeeMapper mapper;
+
+  @Override
+  @Transactional
+  public Long create(@NonNull CreateAirTemperatureFeeRequest request) {
+    return repository.save(mapper.toEntity(request));
+  }
+
+  @Override
+  @Transactional
+  public boolean delete(@NonNull Long id) {
+    return repository.delete(id);
+  }
+
+  @Override
+  public AirTemperatureFeeResponse findById(@NonNull Long id) {
+    var entity = repository.findById(id)
+        .orElseThrow(
+            () -> new FeeNotFoundException("Air temperature fee, with id {}, not found", id));
+    return mapper.toResponse(entity);
+  }
+
+  @Override
+  public List<AirTemperatureFeeResponse> findAll() {
+    return repository.findAll().stream().map(mapper::toResponse).toList();
+  }
+
+  @Override
+  public FeeResult getBaseFee(GetAirTemperatureFeeRequest request) {
+    var feeResult = repository.findBaseFee(request)
+        .orElseThrow(() -> new FeeNotFoundException("Fee for air temperature not found"));
+
+    if (!feeResult.isAllowed()) {
+      throw new RestrictedConditionException("The temperature {} is not allowed",
+          request.temperature());
     }
 
-    @Override
-    @Transactional
-    public boolean delete(@NonNull Long id) {
-        return repository.delete(id);
-    }
-
-    @Override
-    public AirTemperatureFeeResponse findById(@NonNull Long id) {
-        var entity = repository.findById(id)
-            .orElseThrow(() -> new FeeNotFoundException("Air temperature fee, with id {}, not found", id));
-        return mapper.toResponse(entity);
-    }
-
-    @Override
-    public List<AirTemperatureFeeResponse> findAll() {
-        return repository.findAll().stream().map(mapper::toResponse).toList();
-    }
-
-    @Override
-    public FeeResult getBaseFee(GetAirTemperatureFeeRequest request) {
-        var feeResult = repository.findBaseFee(request)
-            .orElseThrow(() -> new FeeNotFoundException("Fee for air temperature not found"));
-
-        if (!feeResult.isAllowed()){
-            throw new RestrictedConditionException("The temperature {} is not allowed", request.temperature());
-        }
-
-        return feeResult;
-    }
+    return feeResult;
+  }
 }

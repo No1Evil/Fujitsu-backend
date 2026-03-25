@@ -5,9 +5,10 @@ import global.fujitsu.api.model.dto.request.create.CreateWeatherPhenomenonFeeReq
 import global.fujitsu.api.model.dto.request.get.GetWeatherPhenomenonFeeRequest;
 import global.fujitsu.api.model.dto.response.get.WeatherPhenomenonFeeResponse;
 
+/** Service for weather phenomenon fees. */
 public interface WeatherPhenomenonFeeService extends BaseFeeService<
     WeatherPhenomenonFeeResponse,
     CreateWeatherPhenomenonFeeRequest,
-    GetWeatherPhenomenonFeeRequest
-> {
+    GetWeatherPhenomenonFeeRequest> {
+
 }

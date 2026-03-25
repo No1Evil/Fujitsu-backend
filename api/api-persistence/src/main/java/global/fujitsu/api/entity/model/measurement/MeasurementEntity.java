@@ -9,7 +9,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.Instant;
 
-/** @param weatherPhenomenon weather value */
+/**
+ * @param weatherPhenomenon weather value
+ */
 public record MeasurementEntity(
     @Nullable Long id,
     @NonNull Long regionId,
@@ -17,12 +19,15 @@ public record MeasurementEntity(
     @NonNull BigDecimal windSpeed,
     // Maybe replace with WeatherType || PhenomenonType
     @NonNull String weatherPhenomenon,
-    @NonNull Instant measuredAt
-) implements EntityModel {
+    @NonNull Instant measuredAt)
+    implements EntityModel {
 
-    public MeasurementEntity {
-        if (weatherPhenomenon.isBlank()){
-            throw new IllegalArgumentException("Weather phenomenon cannot be empty");
-        }
+  /**
+   * Creates MeasurementEntity, checks if weather phenomenon string is empty.
+   */
+  public MeasurementEntity {
+    if (weatherPhenomenon.isBlank()) {
+      throw new IllegalArgumentException("Weather phenomenon cannot be empty");
     }
+  }
 }

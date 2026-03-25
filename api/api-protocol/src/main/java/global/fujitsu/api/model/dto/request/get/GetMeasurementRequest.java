@@ -6,5 +6,12 @@ import org.jetbrains.annotations.Nullable;
 
 import java.time.Instant;
 
-public record GetMeasurementRequest(@NonNull Long regionId, @Nullable Instant timestamp) implements GetRequest {
+/**
+ * Request to get measurement.
+ */
+public record GetMeasurementRequest(
+    @NonNull Long regionId,
+    @Nullable Instant timestamp)
+    implements GetRequest {
+
 }

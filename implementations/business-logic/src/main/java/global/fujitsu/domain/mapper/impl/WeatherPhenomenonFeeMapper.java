@@ -8,29 +8,33 @@ import global.fujitsu.domain.mapper.ResponseMapper;
 
 import java.util.Objects;
 
+/**
+ * Provides a mapper from {@link WeatherPhenomenonFeeEntity} to {@link WeatherPhenomenonFeeResponse}
+ * and from {@link CreateWeatherPhenomenonFeeRequest} to {@link WeatherPhenomenonFeeEntity}.
+ */
 public final class WeatherPhenomenonFeeMapper
     implements ResponseMapper<WeatherPhenomenonFeeEntity, WeatherPhenomenonFeeResponse>,
     RequestMapper<WeatherPhenomenonFeeEntity, CreateWeatherPhenomenonFeeRequest> {
 
-    @Override
-    public WeatherPhenomenonFeeResponse toResponse(WeatherPhenomenonFeeEntity entityModel) {
-        return new WeatherPhenomenonFeeResponse(
-            Objects.requireNonNull(entityModel.id()),
-            entityModel.vehicleTypeId(),
-            entityModel.weatherPhenomenon(),
-            entityModel.fee(),
-            entityModel.isAllowed()
-        );
-    }
+  @Override
+  public WeatherPhenomenonFeeResponse toResponse(WeatherPhenomenonFeeEntity entityModel) {
+    return new WeatherPhenomenonFeeResponse(
+        Objects.requireNonNull(entityModel.id()),
+        entityModel.vehicleTypeId(),
+        entityModel.weatherPhenomenon(),
+        entityModel.fee(),
+        entityModel.isAllowed()
+    );
+  }
 
-    @Override
-    public WeatherPhenomenonFeeEntity toEntity(CreateWeatherPhenomenonFeeRequest request) {
-        return new WeatherPhenomenonFeeEntity(
-            null,
-            request.vehicleTypeId(),
-            request.weatherPhenomenon(),
-            request.price(),
-            request.isAllowed()
-        );
-    }
+  @Override
+  public WeatherPhenomenonFeeEntity toEntity(CreateWeatherPhenomenonFeeRequest request) {
+    return new WeatherPhenomenonFeeEntity(
+        null,
+        request.vehicleTypeId(),
+        request.weatherPhenomenon(),
+        request.price(),
+        request.isAllowed()
+    );
+  }
 }

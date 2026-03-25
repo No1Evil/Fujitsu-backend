@@ -6,11 +6,15 @@ import org.jetbrains.annotations.Nullable;
 
 import java.math.BigDecimal;
 
+/**
+ * Request to create a fee based on air temperature.
+ */
 public record CreateAirTemperatureFeeRequest(
     @Nullable Long vehicleTypeId,
     @NonNull BigDecimal minTemperature,
     @NonNull BigDecimal maxTemperature,
     @NonNull BigDecimal fee,
-    @NonNull Boolean isAllowed
-) implements CreateRequest {
+    @NonNull Boolean isAllowed)
+    implements CreateRequest {
+
 }

@@ -3,6 +3,16 @@ package global.fujitsu.domain.mapper;
 import global.fujitsu.api.entity.model.EntityModel;
 import global.fujitsu.api.model.dto.response.base.Response;
 
-public interface ResponseMapper<ENTITY_MODEL extends EntityModel, RESPONSE_MODEL extends Response> {
-    RESPONSE_MODEL toResponse(ENTITY_MODEL entity);
+/**
+ * Implements mapper from {@link EntityModel} to {@link Response}.
+ *
+ * @param <EntityModelT>   class implementing {@link EntityModel}
+ * @param <ResponseModelT> class implementing {@link Response}
+ */
+public interface ResponseMapper<EntityModelT extends EntityModel, ResponseModelT extends Response> {
+
+  /**
+   * Converts {@link EntityModelT} to {@link ResponseModelT}
+   */
+  ResponseModelT toResponse(EntityModelT entity);
 }

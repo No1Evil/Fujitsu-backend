@@ -7,9 +7,13 @@ import lombok.NonNull;
 
 import java.time.Instant;
 
+/**
+ * Request to calculate a total fee of all fees existing in the database.
+ */
 public record TotalFeeRequest(
     @NonNull RegionName regionName,
     @NonNull VehicleType vehicleType,
-    @NonNull Instant timestamp
-) implements Request {
+    @NonNull Instant timestamp)
+    implements Request {
+
 }

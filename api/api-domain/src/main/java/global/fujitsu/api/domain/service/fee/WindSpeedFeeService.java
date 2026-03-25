@@ -11,9 +11,12 @@ import lombok.NonNull;
 
 import java.math.BigDecimal;
 
+/**
+ * Service for wind speed fees.
+ */
 public interface WindSpeedFeeService extends BaseFeeService<
     WindSpeedFeeResponse,
     CreateWindSpeedFeeRequest,
-    GetWindSpeedFeeRequest
-> {
+    GetWindSpeedFeeRequest> {
+
 }

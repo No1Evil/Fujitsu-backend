@@ -5,6 +5,9 @@ import lombok.NonNull;
 
 import java.math.BigDecimal;
 
+/**
+ * Request to create a fee based on wind speed.
+ */
 public record CreateWindSpeedFeeRequest(
     @NonNull Long vehicleTypeId,
     @NonNull BigDecimal minWindSpeed,

@@ -16,55 +16,57 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
+/** {@inheritDoc} */
 @Service
 @Transactional(readOnly = true)
 @RequiredArgsConstructor
 public class WindSpeedFeeServiceImpl implements WindSpeedFeeService {
-    private final WindSpeedFeeRepository repository;
-    private final WindSpeedFeeMapper mapper;
 
-    @Override
-    @Transactional
-    public Long create(@NonNull CreateWindSpeedFeeRequest request) {
-        var entity = mapper.toEntity(request);
-        return repository.save(entity);
+  private final WindSpeedFeeRepository repository;
+  private final WindSpeedFeeMapper mapper;
+
+  @Override
+  @Transactional
+  public Long create(@NonNull CreateWindSpeedFeeRequest request) {
+    var entity = mapper.toEntity(request);
+    return repository.save(entity);
+  }
+
+  @Override
+  @Transactional
+  public boolean delete(@NonNull Long id) {
+    return repository.delete(id);
+  }
+
+  @Override
+  public WindSpeedFeeResponse findById(@NonNull Long id) {
+    var entity = repository.findById(id)
+        .orElseThrow(() -> new FeeNotFoundException("Wind speed fee with id {} not found", id));
+    return mapper.toResponse(entity);
+  }
+
+  @Override
+  public List<WindSpeedFeeResponse> findAll() {
+    return repository.findAll().stream().map(mapper::toResponse).toList();
+  }
+
+  @Override
+  public FeeResult getBaseFee(GetWindSpeedFeeRequest request) {
+    var feeResult = repository.findBaseFee(request)
+        .orElseThrow(() -> new FeeNotFoundException(
+            "Wind speed fee for vehicle {} and wind speed {} not found",
+            request.vehicleTypeId(),
+            request.windSpeed()
+        ));
+
+    if (!feeResult.isAllowed()) {
+      throw new RestrictedConditionException(
+          "Vehicle {} is not allowed during wind speed {}",
+          request.vehicleTypeId(),
+          request.windSpeed()
+      );
     }
 
-    @Override
-    @Transactional
-    public boolean delete(@NonNull Long id) {
-        return repository.delete(id);
-    }
-
-    @Override
-    public WindSpeedFeeResponse findById(@NonNull Long id) {
-        var entity = repository.findById(id)
-            .orElseThrow(() -> new FeeNotFoundException("Wind speed fee with id {} not found", id));
-        return mapper.toResponse(entity);
-    }
-
-    @Override
-    public List<WindSpeedFeeResponse> findAll() {
-        return repository.findAll().stream().map(mapper::toResponse).toList();
-    }
-
-    @Override
-    public FeeResult getBaseFee(GetWindSpeedFeeRequest request) {
-        var feeResult = repository.findBaseFee(request)
-            .orElseThrow(() -> new FeeNotFoundException(
-                "Wind speed fee for vehicle {} and wind speed {} not found",
-                request.vehicleTypeId(),
-                request.windSpeed()
-            ));
-
-        if (!feeResult.isAllowed()){
-            throw new RestrictedConditionException(
-                "Vehicle {} is not allowed during wind speed {}",
-                request.vehicleTypeId(),
-                request.windSpeed()
-            );
-        }
-
-        return feeResult;
-    }
+    return feeResult;
+  }
 }

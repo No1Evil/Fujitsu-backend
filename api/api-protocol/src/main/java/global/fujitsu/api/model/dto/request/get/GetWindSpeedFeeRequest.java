@@ -5,8 +5,12 @@ import lombok.NonNull;
 
 import java.math.BigDecimal;
 
+/**
+ * Request to calculate a fee based on wind speed.
+ */
 public record GetWindSpeedFeeRequest(
     @NonNull Long vehicleTypeId,
-    @NonNull BigDecimal windSpeed
-) implements GetFeeRequest {
+    @NonNull BigDecimal windSpeed)
+    implements GetFeeRequest {
+
 }

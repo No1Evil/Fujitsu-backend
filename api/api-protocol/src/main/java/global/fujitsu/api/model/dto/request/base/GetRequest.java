@@ -1,4 +1,6 @@
 package global.fujitsu.api.model.dto.request.base;
 
-public interface GetRequest extends Request{
+/** Get request inherited by {@link Request}. */
+public interface GetRequest extends Request {
+
 }

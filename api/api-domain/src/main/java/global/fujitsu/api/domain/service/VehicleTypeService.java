@@ -6,10 +6,13 @@ import global.fujitsu.api.model.dto.response.get.VehicleTypeResponse;
 import global.fujitsu.api.model.vehicle.VehicleType;
 import lombok.NonNull;
 
+/**
+ * Service for vehicle types.
+ */
 public interface VehicleTypeService extends BaseService<
     VehicleTypeResponse,
-    CreateVehicleTypeRequest
-> {
+    CreateVehicleTypeRequest> {
 
-    VehicleTypeResponse findByName(@NonNull VehicleType vehicleType);
+  /** {@return found vehicle type} */
+  VehicleTypeResponse findByName(@NonNull VehicleType vehicleType);
 }

@@ -14,42 +14,45 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
+/** {@inheritDoc} */
 @Service
 @Transactional(readOnly = true)
 @RequiredArgsConstructor
 public class MeasurementServiceImpl implements MeasurementService {
-    private final MeasurementMapper mapper;
-    private final MeasurementRepository repository;
 
-    @Override
-    public Long create(@NonNull CreateMeasurementRequest request) {
-        return repository.save(mapper.toEntity(request));
-    }
+  private final MeasurementMapper mapper;
+  private final MeasurementRepository repository;
 
-    @Override
-    public boolean delete(@NonNull Long id) {
-        return repository.delete(id);
-    }
+  @Override
+  public Long create(@NonNull CreateMeasurementRequest request) {
+    return repository.save(mapper.toEntity(request));
+  }
 
-    @Override
-    public MeasurementResponse findById(@NonNull Long id) {
-        var entity = repository.findById(id).orElseThrow(
-            () -> new EntityNotFoundException("Measurement with id {} not found", id)
-        );
-        return mapper.toResponse(entity);
-    }
+  @Override
+  public boolean delete(@NonNull Long id) {
+    return repository.delete(id);
+  }
 
-    @Override
-    public List<MeasurementResponse> findAll() {
-        return repository.findAll().stream().map(mapper::toResponse).toList();
-    }
+  @Override
+  public MeasurementResponse findById(@NonNull Long id) {
+    var entity = repository.findById(id).orElseThrow(
+        () -> new EntityNotFoundException("Measurement with id {} not found", id)
+    );
+    return mapper.toResponse(entity);
+  }
 
-    @Override
-    public MeasurementResponse find(GetMeasurementRequest request) {
-        var entity = repository.find(request)
-            .orElseThrow(() -> new EntityNotFoundException(
-                "Measurement not found for region {} and timestamp {}", request.regionId(), request.timestamp()
-            ));
-        return mapper.toResponse(entity);
-    }
+  @Override
+  public List<MeasurementResponse> findAll() {
+    return repository.findAll().stream().map(mapper::toResponse).toList();
+  }
+
+  @Override
+  public MeasurementResponse find(GetMeasurementRequest request) {
+    var entity = repository.find(request)
+        .orElseThrow(() -> new EntityNotFoundException(
+            "Measurement not found for region {} and timestamp {}", request.regionId(),
+            request.timestamp()
+        ));
+    return mapper.toResponse(entity);
+  }
 }
