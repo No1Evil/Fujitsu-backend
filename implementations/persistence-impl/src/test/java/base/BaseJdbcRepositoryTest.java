@@ -40,7 +40,7 @@ public abstract class BaseJdbcRepositoryTest<
   protected abstract E createTestEntity();
 
   @Test
-  void testRepositorySave(){
+  void save_StoresEntityAndReturnsId(){
     E entity = createTestEntity();
     Long id = repository.save(entity);
 
@@ -51,7 +51,7 @@ public abstract class BaseJdbcRepositoryTest<
   }
 
   @Test
-  void testRepositoryDelete(){
+  void delete_RemoveEntity_WhenMultipleExist(){
     E testEntity = createTestEntity();
 
     Long entityId1 = repository.save(testEntity);
@@ -69,7 +69,7 @@ public abstract class BaseJdbcRepositoryTest<
   }
 
   @Test
-  void testFindAll(){
+  void shouldContain_WhenMultipleEntitiesCreated(){
     E testEntity = createTestEntity();
 
     Long entityId1 = repository.save(testEntity);
