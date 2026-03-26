@@ -49,11 +49,12 @@ public abstract class BaseJdbcRepositoryTest<
 
   @Test
   void testRepositoryDelete(){
-    E entity1 = createTestEntity();
-    E entity2 = createTestEntity();
+    E testEntity = createTestEntity();
 
     Long entityId1 = repository.save(entity1);
     Long entityId2 = repository.save(entity2);
+    Long entityId1 = repository.save(testEntity);
+    Long entityId2 = repository.save(testEntity);
 
     assertThat("Entity should have been deleted", repository.delete(entityId1));
     assertThat("Entity should have been deleted", repository.findById(entityId1).isEmpty());
