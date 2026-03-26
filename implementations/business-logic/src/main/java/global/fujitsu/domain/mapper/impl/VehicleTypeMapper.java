@@ -30,7 +30,7 @@ public final class VehicleTypeMapper
   public VehicleTypeResponse toResponse(VehicleTypeEntity entityModel) {
     return new VehicleTypeResponse(
         Objects.requireNonNull(entityModel.id()),
-        entityModel.vehicleType()
+        entityModel.type()
     );
   }
 }
