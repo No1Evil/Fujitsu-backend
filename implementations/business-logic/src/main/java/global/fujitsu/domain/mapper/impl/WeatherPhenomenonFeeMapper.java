@@ -35,7 +35,7 @@ public final class WeatherPhenomenonFeeMapper
         null,
         request.vehicleTypeId(),
         request.weatherPhenomenon(),
-        request.price(),
+        request.fee(),
         request.isAllowed()
     );
   }
