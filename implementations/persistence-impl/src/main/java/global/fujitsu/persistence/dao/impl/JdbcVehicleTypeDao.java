@@ -42,7 +42,7 @@ public class JdbcVehicleTypeDao
   @Override
   protected PreparedStatement prepareSaveStatement(PreparedStatement ps, VehicleTypeEntity entity)
       throws SQLException {
-    ps.setString(1, entity.vehicleType().value());
+    ps.setString(1, entity.type().value());
     return ps;
   }
 }

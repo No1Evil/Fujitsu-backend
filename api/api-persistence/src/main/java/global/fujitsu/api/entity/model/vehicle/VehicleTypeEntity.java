@@ -9,11 +9,11 @@ import org.jetbrains.annotations.Nullable;
  * Provides vehicle type entity.
  *
  * @param id entity id
- * @param vehicleType vehicle type id
+ * @param type vehicle type
  */
 public record VehicleTypeEntity(
     @Nullable Long id,
-    @NonNull VehicleType vehicleType
+    @NonNull VehicleType type
 ) implements EntityModel {
 
 }
