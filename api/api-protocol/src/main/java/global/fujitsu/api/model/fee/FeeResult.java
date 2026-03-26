@@ -1,6 +1,7 @@
 package global.fujitsu.api.model.fee;
 
 import global.fujitsu.api.model.dto.response.base.GetResponse;
+import global.fujitsu.api.model.dto.response.base.Response;
 import java.math.BigDecimal;
 import lombok.NonNull;
 
@@ -10,6 +11,6 @@ import lombok.NonNull;
 public record FeeResult(
     @NonNull BigDecimal fee,
     @NonNull Boolean isAllowed)
-    implements GetResponse {
+    implements Response {
 
 }
