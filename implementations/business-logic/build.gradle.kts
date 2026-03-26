@@ -18,4 +18,5 @@ dependencies {
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testImplementation("org.springframework.boot:spring-boot-starter-jdbc-test")
     testImplementation(project(":implementations:persistence-impl"))
+    testRuntimeOnly(project(":implementations:persistence-impl"))
 }
