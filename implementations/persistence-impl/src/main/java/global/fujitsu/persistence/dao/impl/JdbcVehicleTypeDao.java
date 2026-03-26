@@ -13,29 +13,36 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * Dao for {@link VehicleTypeEntity}.
+ */
 @Repository
 public class JdbcVehicleTypeDao
     extends BaseJdbcDao<VehicleTypeEntity>
     implements VehicleTypeRepository {
 
-    public JdbcVehicleTypeDao(@NonNull JdbcTemplate jdbcTemplate) {
-        super(jdbcTemplate,
-            "vehicle_types",
-            List.of("type"),
-            VehicleTypeEntity.class
-        );
-    }
+  /**
+   * Initializes vehicle type Dao.
+   */
+  public JdbcVehicleTypeDao(@NonNull JdbcTemplate jdbcTemplate) {
+    super(jdbcTemplate,
+        "vehicle_types",
+        List.of("type"),
+        VehicleTypeEntity.class
+    );
+  }
 
-    @Override
-    public Optional<VehicleTypeEntity> findByTypeName(@NonNull String name) {
-        String sql = SqlConstants.FIND_BY_QUERY("vehicle_types", "type");
-        return jdbcTemplate.query(sql, mapper, name)
-            .stream().findFirst();
-    }
+  @Override
+  public Optional<VehicleTypeEntity> findByTypeName(@NonNull String name) {
+    String sql = SqlConstants.FIND_BY_QUERY("vehicle_types", "type");
+    return jdbcTemplate.query(sql, mapper, name)
+        .stream().findFirst();
+  }
 
-    @Override
-    protected PreparedStatement prepareSaveStatement(PreparedStatement ps, VehicleTypeEntity entity) throws SQLException {
-        ps.setString(1, entity.type().value());
-        return ps;
-    }
+  @Override
+  protected PreparedStatement prepareSaveStatement(PreparedStatement ps, VehicleTypeEntity entity)
+      throws SQLException {
+    ps.setString(1, entity.vehicleType().value());
+    return ps;
+  }
 }

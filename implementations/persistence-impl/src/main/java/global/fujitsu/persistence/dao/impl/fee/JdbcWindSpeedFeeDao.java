@@ -17,38 +17,46 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * Dao for {@link WindSpeedFeeEntity} provides
+ * a utility method for finding fee by {@link GetWindSpeedFeeRequest}.
+ */
 @Repository
 public class JdbcWindSpeedFeeDao
     extends BaseJdbcFeeBasedDao<WindSpeedFeeEntity, GetWindSpeedFeeRequest>
     implements WindSpeedFeeRepository {
 
-    private final String FIND_WIND_SPEED_FEE_QUERY;
+  private final String findWindSpeedFeeQuery;
 
-    public JdbcWindSpeedFeeDao(
-        @NonNull JdbcTemplate jdbcTemplate,
-        @Value("classpath:sql/scripts/find_wind_speed_fee.sql") Resource script
-    ) throws IOException {
-        super(
-            jdbcTemplate,
-            "wind_speed_fees",
-            List.of("vehicle_type_id", "min_wind_speed", "max_wind_speed"),
-            WindSpeedFeeEntity.class
-        );
-        this.FIND_WIND_SPEED_FEE_QUERY = loadScript(script);
-    }
+  /**
+   * Initializes Dao by loading the wind speed fee script.
+   */
+  public JdbcWindSpeedFeeDao(
+      @NonNull JdbcTemplate jdbcTemplate,
+      @Value("classpath:sql/scripts/find_wind_speed_fee.sql") Resource script
+  ) throws IOException {
+    super(
+        jdbcTemplate,
+        "wind_speed_fees",
+        List.of("vehicle_type_id", "min_wind_speed", "max_wind_speed"),
+        WindSpeedFeeEntity.class
+    );
+    this.findWindSpeedFeeQuery = loadScript(script);
+  }
 
-    @Override
-    public Optional<FeeResult> findBaseFee(GetWindSpeedFeeRequest request) {
-        return findBaseFee(FIND_WIND_SPEED_FEE_QUERY, request.vehicleTypeId(), request.windSpeed());
-    }
+  @Override
+  public Optional<FeeResult> findBaseFee(GetWindSpeedFeeRequest request) {
+    return findBaseFee(findWindSpeedFeeQuery, request.vehicleTypeId(), request.windSpeed());
+  }
 
-    @Override
-    protected PreparedStatement prepareSaveStatement(PreparedStatement ps, WindSpeedFeeEntity entity) throws SQLException {
-        ps.setLong(1, entity.vehicleTypeId());
-        ps.setBigDecimal(2, entity.minWindSpeed());
-        ps.setBigDecimal(3, entity.maxWindSpeed());
-        ps.setBigDecimal(4, entity.fee());
-        ps.setBoolean(5, entity.isAllowed());
-        return ps;
-    }
+  @Override
+  protected PreparedStatement prepareSaveStatement(PreparedStatement ps, WindSpeedFeeEntity entity)
+      throws SQLException {
+    ps.setLong(1, entity.vehicleTypeId());
+    ps.setBigDecimal(2, entity.minWindSpeed());
+    ps.setBigDecimal(3, entity.maxWindSpeed());
+    ps.setBigDecimal(4, entity.fee());
+    ps.setBoolean(5, entity.isAllowed());
+    return ps;
+  }
 }

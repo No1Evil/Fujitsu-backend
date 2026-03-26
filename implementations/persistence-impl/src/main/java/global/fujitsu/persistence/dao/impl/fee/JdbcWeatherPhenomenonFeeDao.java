@@ -17,37 +17,46 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * Dao for {@link WeatherPhenomenonFeeEntity} provides a utility method for finding fee by
+ * {@link GetWeatherPhenomenonFeeRequest}.
+ */
 @Repository
 public class JdbcWeatherPhenomenonFeeDao
     extends BaseJdbcFeeBasedDao<WeatherPhenomenonFeeEntity, GetWeatherPhenomenonFeeRequest>
     implements WeatherPhenomenonFeeRepository {
 
-    private final String FIND_WEATHER_PHENOMENON_FEE_QUERY;
+  private final String findWeatherPhenomenonFeeQuery;
 
-    public JdbcWeatherPhenomenonFeeDao(
-        @NonNull JdbcTemplate jdbcTemplate,
-        @Value("classpath:sql/scripts/find_weather_phenomenon_fee.sql") Resource script
-    ) throws IOException {
-        super(
-            jdbcTemplate,
-            "weather_phenomenon_fees",
-            List.of("vehicle_type_id", "weather_phenomenon"),
-            WeatherPhenomenonFeeEntity.class
-        );
-        this.FIND_WEATHER_PHENOMENON_FEE_QUERY = loadScript(script);
-    }
+  /**
+   * Initializes Dao by loading the weather phenomenon fee script.
+   */
+  public JdbcWeatherPhenomenonFeeDao(
+      @NonNull JdbcTemplate jdbcTemplate,
+      @Value("classpath:sql/scripts/find_weather_phenomenon_fee.sql") Resource script
+  ) throws IOException {
+    super(
+        jdbcTemplate,
+        "weather_phenomenon_fees",
+        List.of("vehicle_type_id", "weather_phenomenon"),
+        WeatherPhenomenonFeeEntity.class
+    );
+    this.findWeatherPhenomenonFeeQuery = loadScript(script);
+  }
 
-    @Override
-    public Optional<FeeResult> findBaseFee(GetWeatherPhenomenonFeeRequest request) {
-        return findBaseFee(FIND_WEATHER_PHENOMENON_FEE_QUERY, request.vehicleTypeId(), request.weatherPhenomenon());
-    }
+  @Override
+  public Optional<FeeResult> findBaseFee(GetWeatherPhenomenonFeeRequest request) {
+    return findBaseFee(findWeatherPhenomenonFeeQuery, request.vehicleTypeId(),
+        request.weatherPhenomenon());
+  }
 
-    @Override
-    protected PreparedStatement prepareSaveStatement(PreparedStatement ps, WeatherPhenomenonFeeEntity entity) throws SQLException {
-        ps.setLong(1, entity.vehicleTypeId());
-        ps.setString(2, entity.weatherPhenomenon());
-        ps.setBigDecimal(3, entity.fee());
-        ps.setBoolean(4, entity.isAllowed());
-        return ps;
-    }
+  @Override
+  protected PreparedStatement prepareSaveStatement(PreparedStatement ps,
+      WeatherPhenomenonFeeEntity entity) throws SQLException {
+    ps.setLong(1, entity.vehicleTypeId());
+    ps.setString(2, entity.weatherPhenomenon());
+    ps.setBigDecimal(3, entity.fee());
+    ps.setBoolean(4, entity.isAllowed());
+    return ps;
+  }
 }

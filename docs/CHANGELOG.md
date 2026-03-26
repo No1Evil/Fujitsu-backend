@@ -1,5 +1,8 @@
 # Changelog
 
+--- [Unreleased] - 26.03.2026
+- Applied Google code style to module: persistence-impl
+
 --- [Unreleased] - 25.03.2026
 - Applied Google code style to modules:
   - api-protocol

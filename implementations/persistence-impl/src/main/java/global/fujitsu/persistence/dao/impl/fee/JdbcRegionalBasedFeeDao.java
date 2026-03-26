@@ -17,37 +17,45 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * Dao for {@link RegionalBasedFeeEntity}, provides
+ * a utility method for finding fee by {@link GetRegionalBasedFeeRequest}.
+ */
 @Repository
 public class JdbcRegionalBasedFeeDao
     extends BaseJdbcFeeBasedDao<RegionalBasedFeeEntity, GetRegionalBasedFeeRequest>
     implements RegionalBasedFeeRepository {
 
-    private final String FIND_REGIONAL_BASED_FEE_QUERY;
+  private final String findRegionalBasedFeeQuery;
 
-    public JdbcRegionalBasedFeeDao(
-        @NonNull JdbcTemplate jdbcTemplate,
-        @Value("classpath:sql/scripts/find_regional_based_fee.sql") Resource script
-    ) throws IOException {
-        super(
-            jdbcTemplate,
-            "regional_based_fees",
-            List.of("region_id", "vehicle_type_id"),
-            RegionalBasedFeeEntity.class
-        );
-        this.FIND_REGIONAL_BASED_FEE_QUERY = loadScript(script);
-    }
+  /**
+   * Initializes Dao by loading the regional based fee script.
+   */
+  public JdbcRegionalBasedFeeDao(
+      @NonNull JdbcTemplate jdbcTemplate,
+      @Value("classpath:sql/scripts/find_regional_based_fee.sql") Resource script
+  ) throws IOException {
+    super(
+        jdbcTemplate,
+        "regional_based_fees",
+        List.of("region_id", "vehicle_type_id"),
+        RegionalBasedFeeEntity.class
+    );
+    this.findRegionalBasedFeeQuery = loadScript(script);
+  }
 
-    @Override
-    public Optional<FeeResult> findBaseFee(GetRegionalBasedFeeRequest request) {
-        return findBaseFee(FIND_REGIONAL_BASED_FEE_QUERY, request.regionId(), request.vehicleTypeId());
-    }
+  @Override
+  public Optional<FeeResult> findBaseFee(GetRegionalBasedFeeRequest request) {
+    return findBaseFee(findRegionalBasedFeeQuery, request.regionId(), request.vehicleTypeId());
+  }
 
-    @Override
-    protected PreparedStatement prepareSaveStatement(PreparedStatement ps, RegionalBasedFeeEntity entity) throws SQLException {
-        ps.setLong(1, entity.regionId());
-        ps.setLong(2, entity.vehicleTypeId());
-        ps.setBigDecimal(3, entity.fee());
-        ps.setBoolean(4, entity.isAllowed());
-        return ps;
-    }
+  @Override
+  protected PreparedStatement prepareSaveStatement(PreparedStatement ps,
+      RegionalBasedFeeEntity entity) throws SQLException {
+    ps.setLong(1, entity.regionId());
+    ps.setLong(2, entity.vehicleTypeId());
+    ps.setBigDecimal(3, entity.fee());
+    ps.setBoolean(4, entity.isAllowed());
+    return ps;
+  }
 }

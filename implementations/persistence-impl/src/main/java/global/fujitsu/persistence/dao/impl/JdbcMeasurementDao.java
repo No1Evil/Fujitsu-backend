@@ -19,42 +19,50 @@ import java.time.Instant;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * Dao for {@link MeasurementEntity}.
+ */
 @Repository
 public class JdbcMeasurementDao
     extends BaseJdbcDao<MeasurementEntity>
     implements MeasurementRepository {
 
-    private static String FIND_LATEST_QUERY;
+  private static String FIND_LATEST_QUERY;
 
-    public JdbcMeasurementDao(
-        @NonNull JdbcTemplate jdbcTemplate,
-        @Value("classpath:sql/scripts/find_latest_measurement_by_region_name.sql") Resource script
-    ) throws IOException {
-        super(
-            jdbcTemplate,
-            "measurements",
-            List.of("region_id", "air_temperature", "wind_speed", "weather_phenomenon", "measured_at"),
-            MeasurementEntity.class
-        );
-        FIND_LATEST_QUERY = loadScript(script);
-    }
+  /**
+   * Initializes Dao by loading the find latest measurement script.
+   */
+  public JdbcMeasurementDao(
+      @NonNull JdbcTemplate jdbcTemplate,
+      @Value("classpath:sql/scripts/find_latest_measurement_by_region_name.sql") Resource script
+  ) throws IOException {
+    super(
+        jdbcTemplate,
+        "measurements",
+        List.of("region_id", "air_temperature", "wind_speed", "weather_phenomenon", "measured_at"),
+        MeasurementEntity.class
+    );
+    FIND_LATEST_QUERY = loadScript(script);
+  }
 
-    @Override
-    protected PreparedStatement prepareSaveStatement(PreparedStatement preparedStatement, MeasurementEntity entity) throws SQLException {
-        preparedStatement.setLong(1, entity.regionId());
-        preparedStatement.setBigDecimal(2, entity.airTemperature());
-        preparedStatement.setBigDecimal(3, entity.windSpeed());
-        preparedStatement.setString(4, entity.weatherPhenomenon());
-        preparedStatement.setTimestamp(5, Timestamp.from(entity.measuredAt()));
-        return preparedStatement;
-    }
+  @Override
+  protected PreparedStatement prepareSaveStatement(PreparedStatement preparedStatement,
+      MeasurementEntity entity) throws SQLException {
+    preparedStatement.setLong(1, entity.regionId());
+    preparedStatement.setBigDecimal(2, entity.airTemperature());
+    preparedStatement.setBigDecimal(3, entity.windSpeed());
+    preparedStatement.setString(4, entity.weatherPhenomenon());
+    preparedStatement.setTimestamp(5, Timestamp.from(entity.measuredAt()));
+    return preparedStatement;
+  }
 
-    @Override
-    public Optional<MeasurementEntity> find(@NonNull GetMeasurementRequest request) {
-        var timestamp = request.timestamp() == null ?
-            Timestamp.from(Instant.now()) : Timestamp.from(request.timestamp());
+  @Override
+  public Optional<MeasurementEntity> find(@NonNull GetMeasurementRequest request) {
+    var timestamp = request.timestamp() == null
+        ? Timestamp.from(Instant.now())
+        : Timestamp.from(request.timestamp());
 
-        return jdbcTemplate.query(FIND_LATEST_QUERY, mapper, request.regionId(), timestamp)
-            .stream().findFirst();
-    }
+    return jdbcTemplate.query(FIND_LATEST_QUERY, mapper, request.regionId(), timestamp)
+        .stream().findFirst();
+  }
 }

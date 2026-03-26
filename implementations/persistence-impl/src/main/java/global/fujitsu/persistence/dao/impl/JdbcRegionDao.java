@@ -15,38 +15,45 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * Dao for {@link RegionEntity}.
+ */
 @Repository
 public class JdbcRegionDao
     extends BaseJdbcDao<RegionEntity>
     implements RegionRepository {
 
-    public JdbcRegionDao(@NonNull JdbcTemplate jdbcTemplate) {
-        super(
-            jdbcTemplate,
-            "regions",
-            List.of("name", "wmo_code"),
-            RegionEntity.class
-        );
-    }
+  /**
+   * Initializes Region DAO.
+   */
+  public JdbcRegionDao(@NonNull JdbcTemplate jdbcTemplate) {
+    super(
+        jdbcTemplate,
+        "regions",
+        List.of("name", "wmo_code"),
+        RegionEntity.class
+    );
+  }
 
-    @Override
-    public Optional<RegionEntity> findByName(@NonNull RegionName regionName) {
-        String sql = SqlConstants.FIND_BY_QUERY("regions", "name");
-        return jdbcTemplate.query(sql, mapper, regionName.value())
-            .stream().findFirst();
-    }
+  @Override
+  public Optional<RegionEntity> findByName(@NonNull RegionName regionName) {
+    String sql = SqlConstants.FIND_BY_QUERY("regions", "name");
+    return jdbcTemplate.query(sql, mapper, regionName.value())
+        .stream().findFirst();
+  }
 
-    @Override
-    public Optional<RegionEntity> findByWmoCode(@NonNull WmoCode wmoCode) {
-        String sql = SqlConstants.FIND_BY_QUERY("regions", "wmo_code");
-        return jdbcTemplate.query(sql, mapper, wmoCode.value())
-            .stream().findFirst();
-    }
+  @Override
+  public Optional<RegionEntity> findByWmoCode(@NonNull WmoCode wmoCode) {
+    String sql = SqlConstants.FIND_BY_QUERY("regions", "wmo_code");
+    return jdbcTemplate.query(sql, mapper, wmoCode.value())
+        .stream().findFirst();
+  }
 
-    @Override
-    protected PreparedStatement prepareSaveStatement(PreparedStatement ps, RegionEntity entity) throws SQLException {
-        ps.setString(1, entity.name().value());
-        ps.setString(2, entity.wmoCode().value());
-        return ps;
-    }
+  @Override
+  protected PreparedStatement prepareSaveStatement(PreparedStatement ps, RegionEntity entity)
+      throws SQLException {
+    ps.setString(1, entity.name().value());
+    ps.setString(2, entity.wmoCode().value());
+    return ps;
+  }
 }

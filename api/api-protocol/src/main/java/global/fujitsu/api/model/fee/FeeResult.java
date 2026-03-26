@@ -5,7 +5,7 @@ import java.math.BigDecimal;
 import lombok.NonNull;
 
 /**
- * The fee result of the {@link global.fujitsu.api.entity.model.fee.EntityFeeModel}
+ * Provides fee result of a EntityFeeModel.
  */
 public record FeeResult(
     @NonNull BigDecimal fee,
