@@ -17,8 +17,8 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.test.context.ContextConfiguration;
 
 @JdbcTest
-@ContextConfiguration(classes = BaseJdbcRepositoryTest.TestConfig.class)
-public abstract class BaseJdbcRepositoryTest<
+@ContextConfiguration(classes = BaseJdbcDaoTest.TestConfig.class)
+public abstract class BaseJdbcDaoTest<
     R extends Repository<E>,
     E extends EntityModel> {
 
@@ -27,7 +27,7 @@ public abstract class BaseJdbcRepositoryTest<
 
   protected final R repository;
 
-  protected BaseJdbcRepositoryTest(R repository){
+  protected BaseJdbcDaoTest(R repository){
     this.repository = repository;
   }
 
