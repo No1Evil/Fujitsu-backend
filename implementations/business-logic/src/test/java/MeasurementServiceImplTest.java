@@ -43,7 +43,7 @@ public class MeasurementServiceImplTest extends BaseServiceTest<
   void shouldFindByRequest_WhenMatchesLatestTime(){
     service.create(createRequest());
 
-    var req = new GetMeasurementRequest(1L, Instant.now());
+    var req = new GetMeasurementRequest(1L, Instant.now().plusSeconds(5));
     assertThatCode(() -> service.find(req))
         .doesNotThrowAnyException();
   }

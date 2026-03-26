@@ -46,8 +46,10 @@ import org.springframework.test.context.ContextConfiguration;
     TotalFeeServiceImpl.class,
     MeasurementServiceImpl.class, JdbcMeasurementDao.class, MeasurementMapper.class,
     RegionServiceImpl.class, JdbcRegionDao.class, RegionMapper.class,
-    AirTemperatureFeeServiceImpl.class, JdbcAirTemperatureFeeDao.class, AirTemperatureFeeMapper.class,
-    WeatherPhenomenonFeeServiceImpl.class, JdbcWeatherPhenomenonFeeDao.class, WeatherPhenomenonFeeMapper.class,
+    AirTemperatureFeeServiceImpl.class, JdbcAirTemperatureFeeDao.class,
+    AirTemperatureFeeMapper.class,
+    WeatherPhenomenonFeeServiceImpl.class, JdbcWeatherPhenomenonFeeDao.class,
+    WeatherPhenomenonFeeMapper.class,
     RegionalBasedFeeServiceImpl.class, JdbcRegionalBasedFeeDao.class, RegionalBasedFeeMapper.class,
     WindSpeedFeeServiceImpl.class, JdbcWindSpeedFeeDao.class, WindSpeedFeeMapper.class,
     VehicleTypeServiceImpl.class, JdbcVehicleTypeDao.class, VehicleTypeMapper.class,
@@ -69,7 +71,7 @@ public class TotalFeeServiceImplTest extends BaseTotalFeeServiceTest {
   private final Long bikeId = 3L;
 
   @BeforeEach
-  void setUp(){
+  void setUp() {
     initTestData();
   }
 
@@ -78,29 +80,39 @@ public class TotalFeeServiceImplTest extends BaseTotalFeeServiceTest {
   @Test
   @DisplayName("Should calculate total fee with multiple surcharges (Cold + Rain)")
   void calculateFee_WithSurcharges() {
-    createMeasurement(Tallinn, -5.0, 15.0, "rain", Instant.now());
+    Instant lookUpTime = Instant.now();
+    createMeasurement(Tallinn, -5.0, 15.0,
+        "rain", lookUpTime.minusSeconds(1));
 
-    TotalFeeResponse totalFee = totalFeeService.getTotalFee(createTotalFeeRequest("Tallinn", "Bike", Instant.now()));
+    TotalFeeResponse totalFee = totalFeeService.getTotalFee(
+        createTotalFeeRequest("Tallinn", "Bike", lookUpTime));
 
-    assertEquals(4.5, totalFee.fee().doubleValue(), "Fee should include temperature, wind, and rain surcharges.");
+    assertEquals(4.5, totalFee.fee().doubleValue(),
+        "Fee should include temperature, wind, and rain surcharges.");
   }
 
   @Test
   @DisplayName("Should throw exception when wind speed is too high for a bike")
   void calculateFee_ForbiddenWindSpeed() {
-    createMeasurement(Tallinn, 15.0, 21.0, "clear", Instant.now());
+    Instant lookUpTime = Instant.now();
+    createMeasurement(Tallinn, 15.0, 21.0,
+        "clear", lookUpTime.minusSeconds(1));
 
     assertThrows(RestrictedConditionException.class, () -> {
-      totalFeeService.getTotalFee(createTotalFeeRequest("Tallinn", "Bike", Instant.now()));
+      totalFeeService.getTotalFee(
+          createTotalFeeRequest("Tallinn", "Bike", lookUpTime));
     }, "Should throw exception when wind speed exceeds safety limits for bikes.");
   }
 
   @Test
   @DisplayName("Should apply extreme cold surcharge for scooters")
   void calculateFee_ExtremeColdScooter() {
-    createMeasurement(Tartu, -15.0, 2.0, "clear", Instant.now());
+    Instant lookUpTime = Instant.now();
+    createMeasurement(Tartu, -15.0, 2.0,
+        "clear", lookUpTime.minusSeconds(1));
 
-    TotalFeeResponse totalFee = totalFeeService.getTotalFee(createTotalFeeRequest("Tartu", "Scooter", Instant.now()));
+    TotalFeeResponse totalFee =
+        totalFeeService.getTotalFee(createTotalFeeRequest("Tartu", "Scooter", lookUpTime));
 
     assertNotNull(totalFee);
     assertTrue(totalFee.fee().doubleValue() > 0);
@@ -109,25 +121,29 @@ public class TotalFeeServiceImplTest extends BaseTotalFeeServiceTest {
   @Test
   @DisplayName("Should throw exception for dangerous weather phenomena")
   void calculateFee_DangerousPhenomenon() {
-    createMeasurement(Parnu, 5.0, 2.0, "glaze", Instant.now());
+    Instant lookUpTime = Instant.now();
+    createMeasurement(Parnu, 5.0, 2.0,
+        "glaze", lookUpTime.minusSeconds(1));
 
     assertThrows(RestrictedConditionException.class, () -> {
-      totalFeeService.getTotalFee(createTotalFeeRequest("Pärnu", "Scooter", Instant.now()));
+      totalFeeService.getTotalFee(createTotalFeeRequest("Pärnu", "Scooter", lookUpTime));
     }, "Delivery should be forbidden during glaze (slippery conditions).");
   }
 
   // By me here
   @Test
-  void calculateFee_ExampleCalculation(){
-    createMeasurement(Tartu, -2.1, 4.7, "snow", Instant.now());
+  void calculateFee_ExampleCalculation() {
+    Instant lookUpTime = Instant.now();
+    createMeasurement(Tartu, -2.1, 4.7,
+        "snow", lookUpTime.minusSeconds(1));
 
     TotalFeeResponse totalFee = totalFeeService.getTotalFee(createTotalFeeRequest(
-        "Tartu", "Bike", Instant.now()
+        "Tartu", "Bike", lookUpTime
     ));
     assertThat("Total fee should be 4.0", totalFee.fee().doubleValue() == 4.0);
   }
 
-  private void initTestData(){
+  private void initTestData() {
     createAirTemperatureFee(scooterId, -999, 999, 0, true);
     createAirTemperatureFee(scooterId, -999, -10, 1, true);
     createAirTemperatureFee(scooterId, -10, 0, 0.5, true);
