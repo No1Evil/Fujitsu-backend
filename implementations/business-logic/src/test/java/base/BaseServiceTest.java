@@ -32,7 +32,7 @@ public abstract class BaseServiceTest<
   @EnableAutoConfiguration
   static class TestConfig {}
 
-  public abstract RequestT createRequest();
+  protected abstract RequestT createRequest();
 
   @Test
   void shouldCreate(){
