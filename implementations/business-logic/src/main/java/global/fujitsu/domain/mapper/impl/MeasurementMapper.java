@@ -6,11 +6,13 @@ import global.fujitsu.api.model.dto.response.get.MeasurementResponse;
 import global.fujitsu.domain.mapper.RequestMapper;
 import global.fujitsu.domain.mapper.ResponseMapper;
 import java.util.Objects;
+import org.springframework.stereotype.Component;
 
 /**
  * Provides a mapper from {@link CreateMeasurementRequest} to {@link MeasurementEntity} and from
  * {@link MeasurementEntity} to {@link MeasurementResponse}.
  */
+@Component
 public final class MeasurementMapper
     implements ResponseMapper<MeasurementEntity, MeasurementResponse>,
     RequestMapper<MeasurementEntity, CreateMeasurementRequest> {

@@ -8,12 +8,14 @@ import global.fujitsu.domain.mapper.RequestMapper;
 import global.fujitsu.domain.mapper.ResponseMapper;
 
 import java.util.Objects;
+import org.springframework.stereotype.Component;
 
 /**
  * Provides a mapper
  * from {@link CreateVehicleTypeRequest} to {@link VehicleTypeEntity}
  * and from {@link VehicleTypeEntity} to {@link VehicleTypeResponse}.
  */
+@Component
 public final class VehicleTypeMapper
     implements ResponseMapper<VehicleTypeEntity, VehicleTypeResponse>,
     RequestMapper<VehicleTypeEntity, CreateVehicleTypeRequest> {
@@ -30,7 +32,7 @@ public final class VehicleTypeMapper
   public VehicleTypeResponse toResponse(VehicleTypeEntity entityModel) {
     return new VehicleTypeResponse(
         Objects.requireNonNull(entityModel.id()),
-        entityModel.vehicleType()
+        entityModel.type()
     );
   }
 }

@@ -6,11 +6,13 @@ import global.fujitsu.api.model.dto.response.get.RegionalBasedFeeResponse;
 import global.fujitsu.domain.mapper.RequestMapper;
 import global.fujitsu.domain.mapper.ResponseMapper;
 import java.util.Objects;
+import org.springframework.stereotype.Component;
 
 /**
  * Provides a mapper from {@link CreateRegionalBasedFeeRequest} to {@link RegionalBasedFeeEntity}
  * and from {@link RegionalBasedFeeEntity} to {@link RegionalBasedFeeResponse}.
  */
+@Component
 public final class RegionalBasedFeeMapper
     implements ResponseMapper<RegionalBasedFeeEntity, RegionalBasedFeeResponse>,
     RequestMapper<RegionalBasedFeeEntity, CreateRegionalBasedFeeRequest> {

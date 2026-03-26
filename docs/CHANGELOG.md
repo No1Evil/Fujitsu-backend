@@ -1,6 +1,18 @@
 # Changelog
 
+## [Unreleased] - 27.03.2026
+- Completed working on TotalFeeServiceTest, easier to implement new tests,
+maybe should be separated to a few classes.
+
+### fixes:
+- specific rules for fees in database are more prioritized
+
+### future plans:
+- write Javadoc for tests
+
 ## [Unreleased] - 26.03.2026
+- Test cases for Services in persistence-impl module
+- Test cases for Dao in the persistence-impl module
 - With the Google code style every public method now has Javadoc.
 - Applied Google code style to module: persistence-impl.
 

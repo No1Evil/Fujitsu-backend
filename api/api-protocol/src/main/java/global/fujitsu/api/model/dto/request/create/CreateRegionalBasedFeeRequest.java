@@ -1,5 +1,6 @@
 package global.fujitsu.api.model.dto.request.create;
 
+import global.fujitsu.api.model.dto.request.base.CreateFeeRequest;
 import global.fujitsu.api.model.dto.request.base.CreateRequest;
 import lombok.NonNull;
 
@@ -13,5 +14,5 @@ public record CreateRegionalBasedFeeRequest(
     @NonNull Long vehicleTypeId,
     @NonNull BigDecimal fee,
     @NonNull Boolean isAllowed)
-    implements CreateRequest {
+    implements CreateFeeRequest {
 }

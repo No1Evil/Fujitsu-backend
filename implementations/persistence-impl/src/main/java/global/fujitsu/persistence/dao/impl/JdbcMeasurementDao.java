@@ -4,7 +4,6 @@ import global.fujitsu.api.entity.model.measurement.MeasurementEntity;
 import global.fujitsu.api.model.dto.request.get.GetMeasurementRequest;
 import global.fujitsu.api.repository.measurement.MeasurementRepository;
 import global.fujitsu.persistence.dao.base.BaseJdbcDao;
-import jakarta.annotation.PostConstruct;
 import lombok.NonNull;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.Resource;
@@ -27,14 +26,14 @@ public class JdbcMeasurementDao
     extends BaseJdbcDao<MeasurementEntity>
     implements MeasurementRepository {
 
-  private static String FIND_LATEST_QUERY;
+  private final String findLatestByRegionIdQuery;
 
   /**
    * Initializes Dao by loading the find latest measurement script.
    */
   public JdbcMeasurementDao(
       @NonNull JdbcTemplate jdbcTemplate,
-      @Value("classpath:sql/scripts/find_latest_measurement_by_region_name.sql") Resource script
+      @Value("classpath:sql/scripts/find_latest_measurement_by_region_id.sql") Resource script
   ) throws IOException {
     super(
         jdbcTemplate,
@@ -42,7 +41,7 @@ public class JdbcMeasurementDao
         List.of("region_id", "air_temperature", "wind_speed", "weather_phenomenon", "measured_at"),
         MeasurementEntity.class
     );
-    FIND_LATEST_QUERY = loadScript(script);
+    findLatestByRegionIdQuery = loadScript(script);
   }
 
   @Override
@@ -62,7 +61,7 @@ public class JdbcMeasurementDao
         ? Timestamp.from(Instant.now())
         : Timestamp.from(request.timestamp());
 
-    return jdbcTemplate.query(FIND_LATEST_QUERY, mapper, request.regionId(), timestamp)
+    return jdbcTemplate.query(findLatestByRegionIdQuery, mapper, request.regionId(), timestamp)
         .stream().findFirst();
   }
 }

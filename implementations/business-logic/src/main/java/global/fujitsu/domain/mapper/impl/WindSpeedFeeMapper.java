@@ -7,11 +7,13 @@ import global.fujitsu.domain.mapper.RequestMapper;
 import global.fujitsu.domain.mapper.ResponseMapper;
 
 import java.util.Objects;
+import org.springframework.stereotype.Component;
 
 /**
  * Provides a mapper from {@link WindSpeedFeeEntity} to {@link WindSpeedFeeResponse} and from
  * {@link CreateWindSpeedFeeRequest} to {@link WindSpeedFeeEntity}.
  */
+@Component
 public final class WindSpeedFeeMapper
     implements ResponseMapper<WindSpeedFeeEntity, WindSpeedFeeResponse>,
     RequestMapper<WindSpeedFeeEntity, CreateWindSpeedFeeRequest> {

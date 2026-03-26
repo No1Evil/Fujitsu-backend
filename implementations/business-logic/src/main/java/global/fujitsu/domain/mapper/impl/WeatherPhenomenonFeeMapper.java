@@ -7,11 +7,13 @@ import global.fujitsu.domain.mapper.RequestMapper;
 import global.fujitsu.domain.mapper.ResponseMapper;
 
 import java.util.Objects;
+import org.springframework.stereotype.Component;
 
 /**
  * Provides a mapper from {@link WeatherPhenomenonFeeEntity} to {@link WeatherPhenomenonFeeResponse}
  * and from {@link CreateWeatherPhenomenonFeeRequest} to {@link WeatherPhenomenonFeeEntity}.
  */
+@Component
 public final class WeatherPhenomenonFeeMapper
     implements ResponseMapper<WeatherPhenomenonFeeEntity, WeatherPhenomenonFeeResponse>,
     RequestMapper<WeatherPhenomenonFeeEntity, CreateWeatherPhenomenonFeeRequest> {
@@ -33,7 +35,7 @@ public final class WeatherPhenomenonFeeMapper
         null,
         request.vehicleTypeId(),
         request.weatherPhenomenon(),
-        request.price(),
+        request.fee(),
         request.isAllowed()
     );
   }

@@ -1,5 +1,6 @@
 package global.fujitsu.api.model.dto.request.create;
 
+import global.fujitsu.api.model.dto.request.base.CreateFeeRequest;
 import global.fujitsu.api.model.dto.request.base.CreateRequest;
 import lombok.NonNull;
 import org.jetbrains.annotations.Nullable;
@@ -15,6 +16,6 @@ public record CreateAirTemperatureFeeRequest(
     @NonNull BigDecimal maxTemperature,
     @NonNull BigDecimal fee,
     @NonNull Boolean isAllowed)
-    implements CreateRequest {
+    implements CreateFeeRequest {
 
 }

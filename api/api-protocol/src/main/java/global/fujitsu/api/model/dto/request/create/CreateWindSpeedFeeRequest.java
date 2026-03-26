@@ -1,5 +1,6 @@
 package global.fujitsu.api.model.dto.request.create;
 
+import global.fujitsu.api.model.dto.request.base.CreateFeeRequest;
 import global.fujitsu.api.model.dto.request.base.CreateRequest;
 import lombok.NonNull;
 
@@ -13,6 +14,7 @@ public record CreateWindSpeedFeeRequest(
     @NonNull BigDecimal minWindSpeed,
     @NonNull BigDecimal maxWindSpeed,
     @NonNull BigDecimal fee,
-    @NonNull Boolean isAllowed
-) implements CreateRequest {
+    @NonNull Boolean isAllowed)
+    implements CreateFeeRequest {
+
 }

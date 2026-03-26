@@ -10,11 +10,13 @@ import global.fujitsu.domain.mapper.RequestMapper;
 import global.fujitsu.domain.mapper.ResponseMapper;
 
 import java.util.Objects;
+import org.springframework.stereotype.Component;
 
 /**
  * Provides a mapper from {@link CreateAirTemperatureFeeRequest} to {@link AirTemperatureFeeEntity} and from
  * {@link AirTemperatureFeeEntity} to {@link AirTemperatureFeeResponse}.
  */
+@Component
 public final class AirTemperatureFeeMapper
     implements ResponseMapper<AirTemperatureFeeEntity, AirTemperatureFeeResponse>,
     RequestMapper<AirTemperatureFeeEntity, CreateAirTemperatureFeeRequest> {
