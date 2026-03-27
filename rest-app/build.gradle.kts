@@ -12,6 +12,8 @@ dependencies {
 
     implementation(project(":implementations:business-logic"))
     implementation(project(":implementations:persistence-impl"))
+    runtimeOnly(project(":implementations:business-logic"))
+    runtimeOnly(project(":implementations:persistence-impl"))
 
     implementation("io.jsonwebtoken:jjwt-api:0.13.0")
     runtimeOnly("io.jsonwebtoken:jjwt-impl:0.13.0")
