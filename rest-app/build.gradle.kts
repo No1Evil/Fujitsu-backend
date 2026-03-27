@@ -9,9 +9,8 @@ description = "REST API Controller"
 dependencies {
     implementation(project(":api:api-protocol"))
     implementation(project(":api:api-domain"))
+    implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:3.0.2")
 
-    implementation(project(":implementations:business-logic"))
-    implementation(project(":implementations:persistence-impl"))
     runtimeOnly(project(":implementations:business-logic"))
     runtimeOnly(project(":implementations:persistence-impl"))
 
