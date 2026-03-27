@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping(value = "/api/admin/vehicles", headers = "X-API-VERSION=1")
 @RequiredArgsConstructor
-public class VehicleTypeController {
+public final class VehicleTypeController {
 
   private final VehicleTypeService service;
 

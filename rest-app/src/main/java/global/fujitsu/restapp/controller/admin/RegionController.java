@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping(value = "/api/admin/regions", headers = "X-API-VERSION=1")
 @RequiredArgsConstructor
-public class RegionController {
+public final class RegionController {
 
   private final RegionService service;
 
