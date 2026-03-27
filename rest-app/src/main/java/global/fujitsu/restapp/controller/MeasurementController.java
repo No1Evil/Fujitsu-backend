@@ -1,4 +1,4 @@
-package global.fujitsu.restapp.configuration.exception;
+package global.fujitsu.restapp.controller;
 
 import global.fujitsu.api.domain.service.MeasurementService;
 import global.fujitsu.api.model.dto.request.create.CreateMeasurementRequest;
