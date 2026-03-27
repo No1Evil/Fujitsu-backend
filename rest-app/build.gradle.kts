@@ -13,6 +13,5 @@ dependencies {
 
     implementation("org.springframework.boot:spring-boot-starter-security")
     implementation("org.springframework.boot:spring-boot-starter-webmvc")
-    implementation("org.springframework.grpc:spring-grpc-client-spring-boot-starter")
     annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
 }
