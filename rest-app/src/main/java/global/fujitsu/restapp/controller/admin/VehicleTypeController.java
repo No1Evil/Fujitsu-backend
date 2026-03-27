@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 /** Provides API for vehicle types. */
 @RestController
-@RequestMapping(value = "/api/admin/vehicles", headers = "X-API-VERSION=1")
+@RequestMapping(value = "/admin/vehicles", headers = "X-API-VERSION=1")
 @RequiredArgsConstructor
 public final class VehicleTypeController {
 

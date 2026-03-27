@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 /** Provides API for wind speed fees. */
 @RestController
-@RequestMapping(value = "/api/admin/fee/wind-speed", headers = "X-API-VERSION=1")
+@RequestMapping(value = "/admin/fee/wind-speed", headers = "X-API-VERSION=1")
 @RequiredArgsConstructor
 public final class WindSpeedFeeController {
 

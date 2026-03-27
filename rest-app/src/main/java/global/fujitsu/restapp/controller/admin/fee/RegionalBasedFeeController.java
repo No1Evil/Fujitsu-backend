@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 /** Provides API for regional based fees. */
 @RestController
-@RequestMapping(value = "/api/admin/fee/regional-based", headers = "X-API-VERSION=1")
+@RequestMapping(value = "admin/fee/regional-based", headers = "X-API-VERSION=1")
 @RequiredArgsConstructor
 public final class RegionalBasedFeeController {
 

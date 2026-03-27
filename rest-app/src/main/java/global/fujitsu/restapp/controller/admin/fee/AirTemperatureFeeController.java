@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 /** Provides API for air temperatures fees. */
 @RestController
-@RequestMapping(value = "/api/admin/fee/air-temperatures", headers = "X-API-VERSION=1")
+@RequestMapping(value = "/admin/fee/air-temperatures", headers = "X-API-VERSION=1")
 @RequiredArgsConstructor
 public final class AirTemperatureFeeController {
 

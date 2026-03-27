@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
  * Provides API for measurements.
  */
 @RestController
-@RequestMapping(value = "/api/admin/measurements", headers = "X-API-VERSION=1")
+@RequestMapping(value = "/admin/measurements", headers = "X-API-VERSION=1")
 @RequiredArgsConstructor
 public final class MeasurementController {
 

@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
  * Provides API for regions.
  */
 @RestController
-@RequestMapping(value = "/api/admin/regions", headers = "X-API-VERSION=1")
+@RequestMapping(value = "/admin/regions", headers = "X-API-VERSION=1")
 @RequiredArgsConstructor
 public final class RegionController {
 

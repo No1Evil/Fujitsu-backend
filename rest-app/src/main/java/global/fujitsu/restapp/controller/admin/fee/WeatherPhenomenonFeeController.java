@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 /** Provides API for weather phenomenon fees. */
 @RestController
-@RequestMapping(value = "/api/admin/fee/weather-phenomenon", headers = "X-API-VERSION=1")
+@RequestMapping(value = "admin/fee/weather-phenomenon", headers = "X-API-VERSION=1")
 @RequiredArgsConstructor
 public final class WeatherPhenomenonFeeController {
 
