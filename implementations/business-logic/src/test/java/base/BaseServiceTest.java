@@ -18,8 +18,10 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.jdbc.test.autoconfigure.JdbcTest;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.jdbc.Sql;
 
 @JdbcTest
+@Sql(scripts = "classpath:schema.sql")
 @ContextConfiguration(classes = BaseServiceTest.TestConfig.class)
 @RequiredArgsConstructor
 public abstract class BaseServiceTest<

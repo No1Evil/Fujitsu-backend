@@ -9,6 +9,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import base.BaseTotalFeeServiceTest;
 import global.fujitsu.api.domain.exceptions.RestrictedConditionException;
 import global.fujitsu.api.model.dto.response.get.TotalFeeResponse;
+import global.fujitsu.api.model.weather.WeatherPhenomenon;
 import global.fujitsu.domain.mapper.impl.AirTemperatureFeeMapper;
 import global.fujitsu.domain.mapper.impl.MeasurementMapper;
 import global.fujitsu.domain.mapper.impl.RegionMapper;
@@ -81,8 +82,8 @@ public class TotalFeeServiceImplTest extends BaseTotalFeeServiceTest {
   @DisplayName("Should calculate total fee with multiple surcharges (Cold + Rain)")
   void calculateFee_WithSurcharges() {
     Instant lookUpTime = Instant.now();
-    createMeasurement(Tallinn, -5.0, 15.0,
-        "rain", lookUpTime.minusSeconds(1));
+    createMeasurement(Tallinn, -4.0, 15.0,
+        new WeatherPhenomenon("rain"), lookUpTime.minusSeconds(10));
 
     TotalFeeResponse totalFee = totalFeeService.getTotalFee(
         createTotalFeeRequest("Tallinn", "Bike", lookUpTime));
@@ -96,7 +97,7 @@ public class TotalFeeServiceImplTest extends BaseTotalFeeServiceTest {
   void calculateFee_ForbiddenWindSpeed() {
     Instant lookUpTime = Instant.now();
     createMeasurement(Tallinn, 15.0, 21.0,
-        "clear", lookUpTime.minusSeconds(1));
+        new WeatherPhenomenon("clear"), lookUpTime.minusSeconds(10));
 
     assertThrows(RestrictedConditionException.class, () -> {
       totalFeeService.getTotalFee(
@@ -109,7 +110,7 @@ public class TotalFeeServiceImplTest extends BaseTotalFeeServiceTest {
   void calculateFee_ExtremeColdScooter() {
     Instant lookUpTime = Instant.now();
     createMeasurement(Tartu, -15.0, 2.0,
-        "clear", lookUpTime.minusSeconds(1));
+        new WeatherPhenomenon("clear"), lookUpTime.minusSeconds(1));
 
     TotalFeeResponse totalFee =
         totalFeeService.getTotalFee(createTotalFeeRequest("Tartu", "Scooter", lookUpTime));
@@ -123,7 +124,7 @@ public class TotalFeeServiceImplTest extends BaseTotalFeeServiceTest {
   void calculateFee_DangerousPhenomenon() {
     Instant lookUpTime = Instant.now();
     createMeasurement(Parnu, 5.0, 2.0,
-        "glaze", lookUpTime.minusSeconds(1));
+        new WeatherPhenomenon("glaze"), lookUpTime.minusSeconds(1));
 
     assertThrows(RestrictedConditionException.class, () -> {
       totalFeeService.getTotalFee(createTotalFeeRequest("Pärnu", "Scooter", lookUpTime));
@@ -135,7 +136,7 @@ public class TotalFeeServiceImplTest extends BaseTotalFeeServiceTest {
   void calculateFee_ExampleCalculation() {
     Instant lookUpTime = Instant.now();
     createMeasurement(Tartu, -2.1, 4.7,
-        "snow", lookUpTime.minusSeconds(1));
+        new WeatherPhenomenon("snow"), lookUpTime.minusSeconds(1));
 
     TotalFeeResponse totalFee = totalFeeService.getTotalFee(createTotalFeeRequest(
         "Tartu", "Bike", lookUpTime
@@ -155,21 +156,21 @@ public class TotalFeeServiceImplTest extends BaseTotalFeeServiceTest {
     createWindSpeedFee(bikeId, 10, 20, 0.5, true);
     createWindSpeedFee(bikeId, 20, 999, 0, false);
 
-    createWeatherPhenomenonFee(scooterId, "clear", 0, true);
-    createWeatherPhenomenonFee(scooterId, "snow", 1, true);
-    createWeatherPhenomenonFee(scooterId, "sleet", 1, true);
-    createWeatherPhenomenonFee(scooterId, "rain", 0.5, true);
-    createWeatherPhenomenonFee(scooterId, "glaze", 0, false);
-    createWeatherPhenomenonFee(scooterId, "hail", 0, false);
-    createWeatherPhenomenonFee(scooterId, "thunder", 0, false);
+    createWeatherPhenomenonFee(scooterId, new WeatherPhenomenon("clear"), 0, true);
+    createWeatherPhenomenonFee(scooterId, new WeatherPhenomenon("snow"), 1, true);
+    createWeatherPhenomenonFee(scooterId, new WeatherPhenomenon("sleet"), 1, true);
+    createWeatherPhenomenonFee(scooterId, new WeatherPhenomenon("clear"), 0.5, true);
+    createWeatherPhenomenonFee(scooterId, new WeatherPhenomenon("glaze"), 0, false);
+    createWeatherPhenomenonFee(scooterId, new WeatherPhenomenon("hail"), 0, false);
+    createWeatherPhenomenonFee(scooterId, new WeatherPhenomenon("thunder"), 0, false);
 
-    createWeatherPhenomenonFee(bikeId, "clear", 0, true);
-    createWeatherPhenomenonFee(bikeId, "snow", 1, true);
-    createWeatherPhenomenonFee(bikeId, "sleet", 1, true);
-    createWeatherPhenomenonFee(bikeId, "rain", 0.5, true);
-    createWeatherPhenomenonFee(bikeId, "glaze", 0, false);
-    createWeatherPhenomenonFee(bikeId, "hail", 0, false);
-    createWeatherPhenomenonFee(bikeId, "thunder", 0, false);
+    createWeatherPhenomenonFee(bikeId, new WeatherPhenomenon("clear"), 0, true);
+    createWeatherPhenomenonFee(bikeId, new WeatherPhenomenon("snow"), 1, true);
+    createWeatherPhenomenonFee(bikeId, new WeatherPhenomenon("sleet"), 1, true);
+    createWeatherPhenomenonFee(bikeId, new WeatherPhenomenon("clear"), 0.5, true);
+    createWeatherPhenomenonFee(bikeId, new WeatherPhenomenon("glaze"), 0, false);
+    createWeatherPhenomenonFee(bikeId, new WeatherPhenomenon("hail"), 0, false);
+    createWeatherPhenomenonFee(bikeId, new WeatherPhenomenon("thunder"), 0, false);
   }
 
 }

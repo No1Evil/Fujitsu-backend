@@ -10,7 +10,7 @@ create table if not exists measurements (
     region_id bigint not null,
     air_temperature decimal(4, 1) not null,
     wind_speed decimal(4, 1) not null,
-    weather_phenomenon varchar(255) not null,
+    weather_phenomenon varchar(255),
     measured_at timestamp not null, -- h2 doesn't have timestamptz :c | TO BE REPLACED
     constraint fk_regions_measurements foreign key (region_id) references regions(id)
 );

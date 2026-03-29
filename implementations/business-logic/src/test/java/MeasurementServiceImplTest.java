@@ -6,6 +6,7 @@ import global.fujitsu.api.domain.exceptions.EntityNotFoundException;
 import global.fujitsu.api.model.dto.request.create.CreateMeasurementRequest;
 import global.fujitsu.api.model.dto.request.get.GetMeasurementRequest;
 import global.fujitsu.api.model.dto.response.get.MeasurementResponse;
+import global.fujitsu.api.model.weather.WeatherPhenomenon;
 import global.fujitsu.domain.mapper.impl.MeasurementMapper;
 import global.fujitsu.domain.service.MeasurementServiceImpl;
 import global.fujitsu.persistence.dao.impl.JdbcMeasurementDao;
@@ -34,7 +35,7 @@ public class MeasurementServiceImplTest extends BaseServiceTest<
         1L,
         BigDecimal.ZERO,
         BigDecimal.ZERO,
-        "rain",
+        new WeatherPhenomenon("rain"),
         Instant.now()
     );
   }

@@ -1,3 +1,3 @@
-INSERT INTO regions (id, name, WMO_CODE) VALUES (1, 'Tallinn', '21211');
-INSERT INTO vehicle_types (id, type) VALUES (1, 'Car');
-INSERT INTO vehicle_types (id, type) VALUES (4, 'Test');
+insert into regions (id, name, WMO_CODE) values (1, 'Tallinn', '21211');
+insert into vehicle_types (id, type) values ( 1, 'Car');
+insert into vehicle_types (id, type) values (4, 'Test');

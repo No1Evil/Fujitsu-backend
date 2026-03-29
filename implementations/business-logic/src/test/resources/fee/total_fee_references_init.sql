@@ -6,11 +6,11 @@ insert into regions (id, name, wmo_code)
 values (3, 'Pärnu', '121213');
 
 insert into vehicle_types(id, type)
-values (1, 'Car');
+values (1, 'car');
 insert into vehicle_types(id, type)
-values (2, 'Scooter');
+values (2, 'scooter');
 insert into vehicle_types(id, type)
-values (3, 'Bike');
+values (3, 'bike');
 
 -- Tallinn
 insert into regional_based_fees(region_id, vehicle_type_id, fee, is_allowed)

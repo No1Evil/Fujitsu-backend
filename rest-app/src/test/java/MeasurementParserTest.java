@@ -48,13 +48,13 @@ public class MeasurementParserTest {
     assertEquals(1L, tallinn.regionId());
     assertEquals(-1.2, tallinn.airTemperature().doubleValue());
     assertEquals(1.7, tallinn.windSpeed().doubleValue());
-    assertEquals("Clear", tallinn.weatherPhenomenon());
+    assertEquals("clear", tallinn.weatherPhenomenon().value());
 
     var parnu = results.get(1);
     assertEquals(3L, parnu.regionId());
     assertEquals(-2.2, parnu.airTemperature().doubleValue());
     assertEquals(0.7, parnu.windSpeed().doubleValue());
-    assertEquals("Clear", parnu.weatherPhenomenon());
+    assertEquals("clear", parnu.weatherPhenomenon().value());
 
   }
 

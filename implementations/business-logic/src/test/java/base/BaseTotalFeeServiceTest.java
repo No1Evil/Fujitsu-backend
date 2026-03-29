@@ -9,6 +9,7 @@ import global.fujitsu.api.model.dto.request.create.CreateWindSpeedFeeRequest;
 import global.fujitsu.api.model.dto.request.get.TotalFeeRequest;
 import global.fujitsu.api.model.region.RegionName;
 import global.fujitsu.api.model.vehicle.VehicleType;
+import global.fujitsu.api.model.weather.WeatherPhenomenon;
 import global.fujitsu.domain.mapper.impl.AirTemperatureFeeMapper;
 import global.fujitsu.domain.mapper.impl.MeasurementMapper;
 import global.fujitsu.domain.mapper.impl.RegionMapper;
@@ -83,7 +84,7 @@ public abstract class BaseTotalFeeServiceTest {
   }
 
   public void createMeasurement(Long regionId, double airTemperature, double windSpeed,
-      String weatherPhenomenon, Instant measuredAt) {
+      WeatherPhenomenon weatherPhenomenon, Instant measuredAt) {
     measurementService.create(new CreateMeasurementRequest(
         regionId, BigDecimal.valueOf(airTemperature), BigDecimal.valueOf(windSpeed),
         weatherPhenomenon, measuredAt
@@ -98,7 +99,7 @@ public abstract class BaseTotalFeeServiceTest {
     ));
   }
 
-  public void createWeatherPhenomenonFee(Long vehicleTypeId, String weatherPhenomenon,
+  public void createWeatherPhenomenonFee(Long vehicleTypeId, WeatherPhenomenon weatherPhenomenon,
       double fee, boolean isAllowed) {
     weatherPhenomenonFeeService.create(new CreateWeatherPhenomenonFeeRequest(
         vehicleTypeId, weatherPhenomenon, BigDecimal.valueOf(fee), isAllowed

@@ -3,6 +3,7 @@ package fee;
 import base.BaseJdbcBasedFeeDaoTest;
 import global.fujitsu.api.entity.model.fee.WeatherPhenomenonFeeEntity;
 import global.fujitsu.api.model.dto.request.get.GetWeatherPhenomenonFeeRequest;
+import global.fujitsu.api.model.weather.WeatherPhenomenon;
 import global.fujitsu.persistence.dao.impl.fee.JdbcWeatherPhenomenonFeeDao;
 import java.math.BigDecimal;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,12 +25,12 @@ public class JdbcWeatherPhenomenonFeeDaoTest
 
   @Override
   public GetWeatherPhenomenonFeeRequest createPassingRequest() {
-    return new GetWeatherPhenomenonFeeRequest(1L, "rain");
+    return new GetWeatherPhenomenonFeeRequest(1L, new WeatherPhenomenon("rain"));
   }
 
   @Override
   public GetWeatherPhenomenonFeeRequest createOutOfBoundRequest() {
-    return new GetWeatherPhenomenonFeeRequest(1L, "storm");
+    return new GetWeatherPhenomenonFeeRequest(1L, new WeatherPhenomenon("storm"));
   }
 
   @Override
@@ -37,7 +38,7 @@ public class JdbcWeatherPhenomenonFeeDaoTest
     return new WeatherPhenomenonFeeEntity(
         null,
         1L,
-        "rain",
+        new WeatherPhenomenon("rain"),
         BigDecimal.ZERO,
         true
     );

@@ -47,7 +47,7 @@ public class JdbcWeatherPhenomenonFeeDao
   @Override
   public Optional<FeeResult> findBaseFee(GetWeatherPhenomenonFeeRequest request) {
     return findBaseFee(findWeatherPhenomenonFeeQuery, request.vehicleTypeId(),
-        request.weatherPhenomenon());
+        request.weatherPhenomenon().value());
   }
 
   @Override

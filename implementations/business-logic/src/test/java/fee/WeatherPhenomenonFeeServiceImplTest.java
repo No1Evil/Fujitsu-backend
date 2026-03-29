@@ -4,6 +4,7 @@ import base.BaseFeeServiceTest;
 import global.fujitsu.api.model.dto.request.create.CreateWeatherPhenomenonFeeRequest;
 import global.fujitsu.api.model.dto.request.get.GetWeatherPhenomenonFeeRequest;
 import global.fujitsu.api.model.dto.response.get.WeatherPhenomenonFeeResponse;
+import global.fujitsu.api.model.weather.WeatherPhenomenon;
 import global.fujitsu.domain.mapper.impl.WeatherPhenomenonFeeMapper;
 import global.fujitsu.domain.service.fee.WeatherPhenomenonFeeServiceImpl;
 import global.fujitsu.persistence.dao.impl.fee.JdbcWeatherPhenomenonFeeDao;
@@ -29,19 +30,19 @@ public class WeatherPhenomenonFeeServiceImplTest
 
   @Override
   protected GetWeatherPhenomenonFeeRequest getFeeRequest() {
-    return new GetWeatherPhenomenonFeeRequest(1L, "rain");
+    return new GetWeatherPhenomenonFeeRequest(1L, new WeatherPhenomenon("rain"));
   }
 
   @Override
   protected GetWeatherPhenomenonFeeRequest restrictionInitiator() {
-    return new GetWeatherPhenomenonFeeRequest(1L, "storm");
+    return new GetWeatherPhenomenonFeeRequest(1L, new WeatherPhenomenon("storm"));
   }
 
   @Override
   protected CreateWeatherPhenomenonFeeRequest restriction() {
     return new CreateWeatherPhenomenonFeeRequest(
         1L,
-        "storm",
+        new WeatherPhenomenon("storm"),
         BigDecimal.ZERO,
         false
     );
@@ -51,7 +52,7 @@ public class WeatherPhenomenonFeeServiceImplTest
   protected CreateWeatherPhenomenonFeeRequest createRequest() {
     return new CreateWeatherPhenomenonFeeRequest(
         1L,
-        "rain",
+        new WeatherPhenomenon("rain"),
         BigDecimal.ZERO,
         true
     );
