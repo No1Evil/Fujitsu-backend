@@ -33,7 +33,7 @@ public class MeasurementSyncService {
   private final Map<String, Long> regionMap = new ConcurrentHashMap<>();
 
   /** Synchronizes measurements in the database. */
-  @Scheduled(cron = "0 15 * * * *")
+  @Scheduled(cron = "${env.WEATHER_SYNC_CRON_SCHEDULE}")
   public void sync() {
     log.info("started synchronizing");
     String url = "https://www.ilmateenistus.ee/ilma_andmed/xml/observations.php";
