@@ -53,7 +53,11 @@ public class JdbcRegionalBasedFeeDao
   protected PreparedStatement prepareSaveStatement(PreparedStatement ps,
       RegionalBasedFeeEntity entity) throws SQLException {
     ps.setLong(1, entity.regionId());
-    ps.setLong(2, entity.vehicleTypeId());
+    if (entity.vehicleTypeId() == null) {
+      ps.setNull(2, java.sql.Types.BIGINT);
+    } else {
+      ps.setLong(2, entity.vehicleTypeId());
+    }
     ps.setBigDecimal(3, entity.fee());
     ps.setBoolean(4, entity.isAllowed());
     return ps;

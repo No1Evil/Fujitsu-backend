@@ -52,7 +52,11 @@ public class JdbcWindSpeedFeeDao
   @Override
   protected PreparedStatement prepareSaveStatement(PreparedStatement ps, WindSpeedFeeEntity entity)
       throws SQLException {
-    ps.setLong(1, entity.vehicleTypeId());
+    if (entity.vehicleTypeId() == null) {
+      ps.setNull(1, java.sql.Types.BIGINT);
+    } else {
+      ps.setLong(1, entity.vehicleTypeId());
+    }
     ps.setBigDecimal(2, entity.minWindSpeed());
     ps.setBigDecimal(3, entity.maxWindSpeed());
     ps.setBigDecimal(4, entity.fee());

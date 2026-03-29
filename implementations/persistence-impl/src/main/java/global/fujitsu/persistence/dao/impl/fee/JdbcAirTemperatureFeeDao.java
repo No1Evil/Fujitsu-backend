@@ -38,7 +38,7 @@ public class JdbcAirTemperatureFeeDao
     super(
         jdbcTemplate,
         "air_temperature_fees",
-        List.of("min_temperature", "max_temperature"),
+        List.of("vehicle_type_id", "min_temperature", "max_temperature"),
         AirTemperatureFeeEntity.class
     );
     this.findAirTemperatureFeeQuery = loadScript(script);
@@ -53,9 +53,14 @@ public class JdbcAirTemperatureFeeDao
   @Override
   protected PreparedStatement prepareSaveStatement(PreparedStatement ps,
       AirTemperatureFeeEntity entity) throws SQLException {
-    ps.setBigDecimal(1, entity.minTemperature());
-    ps.setBigDecimal(2, entity.maxTemperature());
-    ps.setBigDecimal(3, entity.fee());
+    if (entity.vehicleTypeId() == null) {
+      ps.setNull(1, java.sql.Types.BIGINT);
+    } else {
+      ps.setLong(1, entity.vehicleTypeId());
+    }
+    ps.setBigDecimal(2, entity.minTemperature());
+    ps.setBigDecimal(3, entity.maxTemperature());
+    ps.setBigDecimal(4, entity.fee());
     ps.setBoolean(4, entity.isAllowed());
     return ps;
   }
