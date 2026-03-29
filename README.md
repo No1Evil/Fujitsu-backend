@@ -17,7 +17,7 @@ This is a Practice-driven project and this doesn't stay as MVP or Production-rea
 
 ## System context
 
-![System context](docs/images/System-context.drawio.png)
+<img src="docs/images/System-context.drawio.png" alt="System context" width="75%" height="75%">
 
 ## Project description
 Provides endpoints to creating, reading, deleting:
