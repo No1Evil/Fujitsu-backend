@@ -15,6 +15,9 @@ dependencies {
     runtimeOnly(project(":implementations:business-logic"))
     runtimeOnly(project(":implementations:persistence-impl"))
 
+    // Better performance xml parser, but a bit harder
+    implementation("com.fasterxml.woodstox:woodstox-core:7.1.1")
+
     implementation("io.jsonwebtoken:jjwt-api:0.13.0")
     runtimeOnly("io.jsonwebtoken:jjwt-impl:0.13.0")
     runtimeOnly("io.jsonwebtoken:jjwt-jackson:0.13.0")
