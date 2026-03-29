@@ -1,7 +1,7 @@
 package global.fujitsu.api.model.dto.request.get;
 
 import global.fujitsu.api.model.dto.request.base.GetRequest;
-import lombok.NonNull;
+import jakarta.validation.constraints.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.time.Instant;
@@ -10,7 +10,7 @@ import java.time.Instant;
  * Request to get measurement.
  */
 public record GetMeasurementRequest(
-    @NonNull Long regionId,
+    @NotNull(message = "The region is missing") Long regionId,
     @Nullable Instant timestamp)
     implements GetRequest {
 

@@ -3,10 +3,13 @@ package global.fujitsu.restapp.configuration.exception;
 import global.fujitsu.api.domain.exceptions.EntityNotFoundException;
 import global.fujitsu.api.domain.exceptions.FeeNotFoundException;
 import global.fujitsu.api.domain.exceptions.RestrictedConditionException;
+import java.util.stream.Collectors;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.ErrorResponse;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 /**
@@ -43,6 +46,19 @@ public final class GlobalExceptionHandler {
   public ResponseEntity<ErrorResponse> handleIllegalArgumentException(
       IllegalArgumentException ex) {
     ErrorResponse error = ErrorResponse.create(ex, HttpStatus.BAD_REQUEST, ex.getMessage());
+    return ResponseEntity.badRequest().body(error);
+  }
+
+  /** Handles validation exceptions. */
+  @ExceptionHandler(MethodArgumentNotValidException.class)
+  public ResponseEntity<ErrorResponse> handleValidationExceptions(
+      MethodArgumentNotValidException ex) {
+    String errorMessage = ex.getBindingResult()
+        .getFieldErrors()
+        .stream()
+        .map(error -> error.getField() + ": " + error.getDefaultMessage())
+        .collect(Collectors.joining());
+    ErrorResponse error = ErrorResponse.create(ex, HttpStatus.BAD_REQUEST, errorMessage);
     return ResponseEntity.badRequest().body(error);
   }
 }

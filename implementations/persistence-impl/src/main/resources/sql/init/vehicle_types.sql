@@ -1,8 +1,8 @@
-merge into vehicle_types (id, type)
-values ( 1,'CAR' );
+insert into vehicle_types (id, type)
+values ( 1, 'car' );
 
-merge into vehicle_types (id, type)
-values ( 2,'SCOOTER' );
+insert into vehicle_types (id, type)
+values ( 2, 'scooter' );
 
-merge into vehicle_types (id, type)
-values ( 3,'BIKE' );
+insert into vehicle_types (id, type)
+values ( 3, 'bike' );

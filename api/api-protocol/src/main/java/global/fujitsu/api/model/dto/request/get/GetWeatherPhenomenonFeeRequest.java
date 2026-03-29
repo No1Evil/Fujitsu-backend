@@ -1,14 +1,15 @@
 package global.fujitsu.api.model.dto.request.get;
 
 import global.fujitsu.api.model.dto.request.base.GetFeeRequest;
-import lombok.NonNull;
+import global.fujitsu.api.model.weather.WeatherPhenomenon;
+import jakarta.validation.constraints.NotNull;
 
 /**
  * Request to calculate a fee based on weather phenomenon.
  */
 public record GetWeatherPhenomenonFeeRequest(
-    @NonNull Long vehicleTypeId,
-    @NonNull String weatherPhenomenon)
+    @NotNull(message = "The vehicle type is missing") Long vehicleTypeId,
+    @NotNull(message = "The weather phenomenon is missing") WeatherPhenomenon weatherPhenomenon)
     implements GetFeeRequest {
 
 }

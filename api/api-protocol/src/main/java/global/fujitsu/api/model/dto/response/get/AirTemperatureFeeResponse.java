@@ -1,17 +1,17 @@
 package global.fujitsu.api.model.dto.response.get;
 
 import global.fujitsu.api.model.dto.response.base.GetResponse;
-import lombok.NonNull;
+import jakarta.validation.constraints.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.math.BigDecimal;
 
 public record AirTemperatureFeeResponse(
-    @NonNull Long id,
+    @NotNull Long id,
     @Nullable Long vehicleTypeId,
-    @NonNull BigDecimal minTemperature,
-    @NonNull BigDecimal maxTemperature,
-    @NonNull BigDecimal fee,
-    @NonNull Boolean isAllowed
+    @NotNull BigDecimal minTemperature,
+    @NotNull BigDecimal maxTemperature,
+    @NotNull BigDecimal fee,
+    @NotNull Boolean isAllowed
 ) implements GetResponse {
 }

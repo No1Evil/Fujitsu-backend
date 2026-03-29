@@ -11,8 +11,7 @@ import java.math.BigDecimal;
  */
 public record WeatherPhenomenonFeeEntity(
     @Nullable Long id,
-    @NonNull Long vehicleTypeId,
-    @NonNull String weatherPhenomenon,
+    @Nullable Long vehicleTypeId,
     @NonNull WeatherPhenomenon weatherPhenomenon,
     @NonNull BigDecimal fee,
     @NonNull Boolean isAllowed)
