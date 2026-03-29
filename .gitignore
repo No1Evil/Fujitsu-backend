@@ -30,6 +30,9 @@ bin/
 ### System Files ###
 .DS_Store
 
+### Secrets ###
+.env
+
 ### Database
 *.mv.db
 *.trace.db

@@ -11,6 +11,7 @@ import global.fujitsu.api.domain.service.fee.WindSpeedFeeService;
 import global.fujitsu.api.model.dto.request.get.*;
 import global.fujitsu.api.model.dto.response.get.TotalFeeResponse;
 import global.fujitsu.api.model.fee.FeeResult;
+import java.time.Instant;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -36,8 +37,10 @@ public class TotalFeeServiceImpl implements TotalFeeService {
   public TotalFeeResponse getTotalFee(TotalFeeRequest request) {
     var region = regionService.findByRegionName(request.regionName());
 
+    var timestamp = request.timestamp() == null ? Instant.now() : request.timestamp();
+
     var measurement = measurementService.find(
-        new GetMeasurementRequest(region.id(), request.timestamp())
+        new GetMeasurementRequest(region.id(), timestamp)
     );
 
     var vehicleTypeId = vehicleTypeService.findByName(request.vehicleType()).id();

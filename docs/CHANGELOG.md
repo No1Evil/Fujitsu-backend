@@ -1,6 +1,24 @@
 # Changelog
 
+## [Unreleased] - 29.03.2026
+- Weather sync CRON scheduler is configurable via .env
+- Measurement sync could be run manually through `/api/admin/measurements/sync`
+- Implemented docker-compose for dev and prod profiles
+- Configured persistence-impl to be run on different profiles
+  - dev - embedded *(in-memory)* h2 database
+  - prod - should be configured via .env
+- Added .env.example
+- Implemented MeasurementSyncService
+- Implemented Jwt based oauth authorization server
+- Refactored TotalFeeController
+
+## [Unreleased] - 28.03.2026
+- Added allowed CORS mappings
+- Configured default endpoint path (simplified request-mappings)
+
 ## [Unreleased] - 27.03.2026
+- Configured swagger and openapi
+- Implemented endpoints to CR*D operations on rest-app.
 - Completed working on TotalFeeServiceTest, easier to implement new tests,
 maybe should be separated to a few classes.
 

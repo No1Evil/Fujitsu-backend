@@ -6,6 +6,7 @@ import global.fujitsu.api.model.vehicle.VehicleType;
 import lombok.NonNull;
 
 import java.time.Instant;
+import org.jetbrains.annotations.Nullable;
 
 /**
  * Request to calculate a total fee of all fees existing in the database.
@@ -13,7 +14,7 @@ import java.time.Instant;
 public record TotalFeeRequest(
     @NonNull RegionName regionName,
     @NonNull VehicleType vehicleType,
-    @NonNull Instant timestamp)
+    @Nullable Instant timestamp)
     implements Request {
 
 }

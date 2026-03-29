@@ -1,0 +1,41 @@
+services:
+  db:
+    image: oscarfonts/h2:latest
+    profiles: ["prod"]
+    container_name: h2
+    environment:
+      - H2_OPTIONS=-ifNotExists -tcpAllowOthers
+    ports:
+      - "1521"
+      - "81"
+    volumes:
+      - h2_data:/opt/h2-data
+
+  rest-app:
+    profiles: ["prod"]
+    build:
+      context: .
+      dockerfile: rest-app/Dockerfile
+    container_name: rest_app
+    env_file:
+      - .env
+    environment:
+      - DATABASE_URL=tcp://db:1521/./fujitsu_db
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
+
+  test-app:
+    profiles: ["dev"]
+    build:
+      context: .
+      dockerfile: rest-app/Dockerfile
+    container_name: test_app
+    env_file:
+      - .env
+    ports:
+      - "8081:8080"
+
+volumes:
+  h2_data:
