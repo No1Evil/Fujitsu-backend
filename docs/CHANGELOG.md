@@ -1,6 +1,8 @@
 # Changelog
 
-## [Unreleased] - 29.03.2026
+## [Release-1.0] - 29.03.2026
+- Applied C4 models of system context and rest-app
+- Completed the fast-start section in README.md
 - Weather sync CRON scheduler is configurable via .env
 - Measurement sync could be run manually through `/api/admin/measurements/sync`
 - Implemented docker-compose for dev and prod profiles
