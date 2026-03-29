@@ -37,4 +37,12 @@ public final class GlobalExceptionHandler {
     ErrorResponse error = ErrorResponse.create(ex, HttpStatus.BAD_REQUEST, ex.getMessage());
     return ResponseEntity.badRequest().body(error);
   }
+
+  /** Handles illegal argument exceptions. */
+  @ExceptionHandler(IllegalArgumentException.class)
+  public ResponseEntity<ErrorResponse> handleIllegalArgumentException(
+      IllegalArgumentException ex) {
+    ErrorResponse error = ErrorResponse.create(ex, HttpStatus.BAD_REQUEST, ex.getMessage());
+    return ResponseEntity.badRequest().body(error);
+  }
 }
