@@ -16,14 +16,14 @@ Navigation
 This is a Practice-driven project and this doesn't stay as MVP or Production-ready.
 
 ## Project description
-Provide REST API backend for Fujitsu food delivery application
+Provides endpoints to creating, reading, deleting:
+fee rules, allowed regions and vehicles. Parses `ilmateenistus.ee`
+to get fresh weather measurements using memory and CPU efficient XML parser.
 
 ## Task
 The objective of the task is to develop a sub-functionality of the food delivery application, which
 calculates the delivery fee for food couriers based on regional base fee, vehicle type, and weather
 conditions.
-
-## 
 
 # Fast start
 <details>
