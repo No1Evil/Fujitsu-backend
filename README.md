@@ -15,6 +15,10 @@ Navigation
 ## Note
 This is a Practice-driven project and this doesn't stay as MVP or Production-ready.
 
+## System context
+
+![System context](docs/images/System-context.drawio.png)
+
 ## Project description
 Provides endpoints to creating, reading, deleting:
 fee rules, allowed regions and vehicles. Parses `ilmateenistus.ee`
