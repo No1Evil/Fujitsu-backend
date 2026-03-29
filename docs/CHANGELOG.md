@@ -1,5 +1,15 @@
 # Changelog
 
+## [] - 30.03.2026
+- Added validation of RequestBodies in REST controllers
+- Made fee rules and calculations more flexible - allowed
+vehicle type to be nullable, so that it is not necessary
+to write fee rule for each vehicle type
+- Implemented better error handling in DTOs using
+Jakarta annotations
+- Implemented WeatherPhenomenon wrapper instead of raw string
+- Fixed tests not initializing
+
 ## [Unreleased] - 29.03.2026
 - Applied C4 models of system context and rest-app
 - Completed the fast-start section in README.md
