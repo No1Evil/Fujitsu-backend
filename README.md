@@ -2,9 +2,9 @@
 
 Navigation
 - [Introduction](#introduction)
-- [Fast start](#fast-start)
+- ***[Fast start](#fast-start)***
 - [Changelogs](docs/CHANGELOG.md)
-- [Project visualization](docs/VISUALIZATION.md)
+- ***[Project visualization](docs/VISUALIZATION.md)***
 - [Project workflow](docs/WORKFLOW.md)
 - [Authors](#authors)
 - [License](#license)
@@ -14,6 +14,19 @@ Navigation
 
 ## Note
 This is a Practice-driven project and this doesn't stay as MVP or Production-ready.
+
+## Tech stack
+<details>
+Java 25
+
+Spring boot 4.0.4
+
+H2
+
+JDBC
+
+Docker
+</details>
 
 ## System context
 
