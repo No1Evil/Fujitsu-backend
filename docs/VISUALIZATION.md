@@ -5,7 +5,7 @@ Navigation\
 [Entity relation model](#entity-relation-model)
 
 ### System context
-![System context](images/System-Context.drawio.png)
+![System context](images/System-context.drawio.png)
 
 ### rest-app
 ![rest-app](images/rest-app.drawio.png)
