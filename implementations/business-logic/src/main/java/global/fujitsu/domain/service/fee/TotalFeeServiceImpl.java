@@ -35,15 +35,13 @@ public class TotalFeeServiceImpl implements TotalFeeService {
 
   @Override
   public TotalFeeResponse getTotalFee(TotalFeeRequest request) {
-    var region = regionService.findByRegionName(request.regionName());
-
     var timestamp = request.timestamp() == null ? Instant.now() : request.timestamp();
 
     var measurement = measurementService.find(
-        new GetMeasurementRequest(region.id(), timestamp)
+        new GetMeasurementRequest(request.regionId(), timestamp)
     );
 
-    var vehicleTypeId = vehicleTypeService.findByName(request.vehicleType()).id();
+    var vehicleTypeId = request.vehicleTypeId();
 
     return toTotalFeeResponse(
         airTemperatureFeeService.getBaseFee(

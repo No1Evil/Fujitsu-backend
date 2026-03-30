@@ -8,7 +8,7 @@ import org.jetbrains.annotations.Nullable;
  * Provides wind speed fee entity.
  *
  * @param id            entity id.
- * @param vehicleTypeId vehicle vehicleType id
+ * @param vehicleTypeId vehicle vehicleTypeId id
  * @param minWindSpeed  minimum wind speed
  * @param maxWindSpeed  maximum wind speed
  * @param fee           the fee for the filter
