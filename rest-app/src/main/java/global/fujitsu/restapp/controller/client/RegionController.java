@@ -27,7 +27,7 @@ public class RegionController {
 
   /** {@return found region} */
   @GetMapping("/find")
-  public ResponseEntity<RegionResponse> findByName(@RequestParam String regionName) {
-    return ResponseEntity.ok(service.findByRegionName(new RegionName(regionName)));
+  public ResponseEntity<RegionResponse> findByName(@RequestParam String name) {
+    return ResponseEntity.ok(service.findByRegionName(new RegionName(name)));
   }
 }

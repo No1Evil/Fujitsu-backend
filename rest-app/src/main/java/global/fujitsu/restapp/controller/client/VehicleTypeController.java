@@ -30,7 +30,7 @@ public class VehicleTypeController {
 
   /** {@return found vehicle type} */
   @GetMapping("/find")
-  public ResponseEntity<VehicleTypeResponse> findByName(@RequestParam String vehicleType) {
-    return ResponseEntity.ok(service.findByName(new VehicleType(vehicleType)));
+  public ResponseEntity<VehicleTypeResponse> findByName(@RequestParam String type) {
+    return ResponseEntity.ok(service.findByName(new VehicleType(type)));
   }
 }
