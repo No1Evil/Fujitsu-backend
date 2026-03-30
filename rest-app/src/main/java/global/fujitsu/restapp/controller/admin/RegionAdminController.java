@@ -22,25 +22,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping(value = "/admin/regions", headers = "X-API-VERSION=1")
 @RequiredArgsConstructor
-public final class RegionController {
+public final class RegionAdminController {
 
   private final RegionService service;
-
-  /**
-   * Example: GET /api/v1/admin/regions?name=London.
-   * GET /api/v1/admin/regions?code=123231.
-   *
-   * @return all regions or by name or by code
-   */
-  @GetMapping
-  @Operation(description = "Finds by region name or else all")
-  public ResponseEntity<?> find(
-      @Valid @RequestBody(required = false) RegionName name) {
-    if (name != null) {
-      return ResponseEntity.ok(service.findByRegionName(name));
-    }
-    return ResponseEntity.ok(service.findAll());
-  }
 
   /** {@return created region id} */
   @PostMapping
