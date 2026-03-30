@@ -46,8 +46,10 @@ public class TotalFeeServiceImplTest extends BaseTotalFeeServiceTest {
     createMeasurement(Tallinn, -4.0, 15.0,
         new WeatherPhenomenon("rain"), lookUpTime.minusSeconds(10));
 
+    createWeatherPhenomenonFee(null, new WeatherPhenomenon("rain"), 0.5, true);
+
     TotalFeeResponse totalFee = totalFeeService.getTotalFee(
-        createTotalFeeRequest("Tallinn", "Bike", lookUpTime));
+        createTotalFeeRequest(Tallinn, bikeId, lookUpTime));
 
     assertEquals(4.5, totalFee.fee().doubleValue(),
         "Fee should include temperature, wind, and rain surcharges.");
@@ -60,9 +62,12 @@ public class TotalFeeServiceImplTest extends BaseTotalFeeServiceTest {
     createMeasurement(Tallinn, 15.0, 21.0,
         new WeatherPhenomenon("clear"), lookUpTime.minusSeconds(10));
 
+    createAirTemperatureFee(null, -999, 999, 0, true);
+    createWindSpeedFee(null, 20, 50, 0, false);
+
     assertThrows(RestrictedConditionException.class, () -> {
       totalFeeService.getTotalFee(
-          createTotalFeeRequest("Tallinn", "Bike", lookUpTime));
+          createTotalFeeRequest(Tallinn, bikeId, lookUpTime));
     }, "Should throw exception when wind speed exceeds safety limits for bikes.");
   }
 
@@ -74,7 +79,7 @@ public class TotalFeeServiceImplTest extends BaseTotalFeeServiceTest {
         new WeatherPhenomenon("clear"), lookUpTime.minusSeconds(1));
 
     TotalFeeResponse totalFee =
-        totalFeeService.getTotalFee(createTotalFeeRequest("Tartu", "Scooter", lookUpTime));
+        totalFeeService.getTotalFee(createTotalFeeRequest(Tartu, scooterId, lookUpTime));
 
     assertNotNull(totalFee);
     assertTrue(totalFee.fee().doubleValue() > 0);
@@ -88,7 +93,7 @@ public class TotalFeeServiceImplTest extends BaseTotalFeeServiceTest {
         new WeatherPhenomenon("glaze"), lookUpTime.minusSeconds(1));
 
     assertThrows(RestrictedConditionException.class, () -> {
-      totalFeeService.getTotalFee(createTotalFeeRequest("Pärnu", "Scooter", lookUpTime));
+      totalFeeService.getTotalFee(createTotalFeeRequest(Parnu, scooterId, lookUpTime));
     }, "Delivery should be forbidden during glaze (slippery conditions).");
   }
 
@@ -100,7 +105,7 @@ public class TotalFeeServiceImplTest extends BaseTotalFeeServiceTest {
         new WeatherPhenomenon("snow"), lookUpTime.minusSeconds(1));
 
     TotalFeeResponse totalFee = totalFeeService.getTotalFee(createTotalFeeRequest(
-        "Tartu", "Bike", lookUpTime
+        Tartu, bikeId, lookUpTime
     ));
     assertThat("Total fee should be 4.0", totalFee.fee().doubleValue() == 4.0);
   }

@@ -38,9 +38,9 @@ public abstract class BaseTotalFeeServiceTest {
   @Autowired
   protected WindSpeedFeeService windSpeedFeeService;
 
-  public TotalFeeRequest createTotalFeeRequest(String regionName, String vehicleType,
+  public TotalFeeRequest createTotalFeeRequest(Long regionId, Long vehicleTypeId,
       Instant timestamp) {
-    return new TotalFeeRequest(new RegionName(regionName), new VehicleType(vehicleType), timestamp);
+    return new TotalFeeRequest(regionId, vehicleTypeId, timestamp);
   }
 
   public void createMeasurement(Long regionId, double airTemperature, double windSpeed,

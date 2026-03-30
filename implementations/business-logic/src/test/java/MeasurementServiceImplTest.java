@@ -12,7 +12,11 @@ import java.math.BigDecimal;
 import java.time.Instant;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.jdbc.Sql;
 
+@Sql({
+    "classpath:sql/scripts/regions_and_vehicles_references.sql"
+})
 public class MeasurementServiceImplTest extends BaseServiceTest<
     MeasurementServiceImpl, MeasurementResponse, CreateMeasurementRequest> {
 

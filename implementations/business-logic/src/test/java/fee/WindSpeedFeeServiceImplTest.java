@@ -7,6 +7,7 @@ import global.fujitsu.api.model.dto.response.get.WindSpeedFeeResponse;
 import global.fujitsu.domain.service.fee.WindSpeedFeeServiceImpl;
 import java.math.BigDecimal;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.jdbc.Sql;
 
 public class WindSpeedFeeServiceImplTest
     extends BaseFeeServiceTest<

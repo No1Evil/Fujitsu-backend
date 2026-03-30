@@ -10,7 +10,11 @@ import global.fujitsu.api.model.dto.request.base.CreateFeeRequest;
 import global.fujitsu.api.model.dto.request.base.GetFeeRequest;
 import global.fujitsu.api.model.dto.response.base.GetResponse;
 import org.junit.jupiter.api.Test;
+import org.springframework.test.context.jdbc.Sql;
 
+@Sql({
+    "classpath:sql/scripts/regions_and_vehicles_references.sql"
+})
 public abstract class BaseFeeServiceTest<
     S extends BaseFeeService<ResponseT, CreateT, GetFeeRequestT>,
     ResponseT extends GetResponse,
