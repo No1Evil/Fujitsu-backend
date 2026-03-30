@@ -12,7 +12,7 @@ import java.math.BigDecimal;
 public record WeatherPhenomenonFeeEntity(
     @Nullable Long id,
     @Nullable Long vehicleTypeId,
-    @NonNull WeatherPhenomenon weatherPhenomenon,
+    @Nullable WeatherPhenomenon weatherPhenomenon,
     @NonNull BigDecimal fee,
     @NonNull Boolean isAllowed)
     implements EntityFeeModel {
