@@ -1,5 +1,6 @@
 package global.fujitsu.persistence.config;
 
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 
@@ -11,6 +12,7 @@ import org.springframework.context.annotation.PropertySource;
 @PropertySource("classpath:persistence.properties")
 @PropertySource(value = "classpath:persistence-${spring.profiles.active}.properties",
     ignoreResourceNotFound = true)
+@ComponentScan(basePackages = "global.fujitsu.persistence")
 public class PersistenceConfig {
 
 }
