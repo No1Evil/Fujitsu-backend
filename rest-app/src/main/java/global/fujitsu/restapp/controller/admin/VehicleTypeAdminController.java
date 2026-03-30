@@ -6,7 +6,6 @@ import global.fujitsu.api.model.dto.response.get.VehicleTypeResponse;
 import global.fujitsu.api.model.vehicle.VehicleType;
 import io.swagger.v3.oas.annotations.Operation;
 import jakarta.validation.Valid;
-import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -21,19 +20,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping(value = "/admin/vehicles", headers = "X-API-VERSION=1")
 @RequiredArgsConstructor
-public final class VehicleTypeController {
+public final class VehicleTypeAdminController {
 
   private final VehicleTypeService service;
-
-  /** {@return found vehicle type or all vehicles} */
-  @GetMapping
-  @Operation(description = "Finds vehicle by name or else all")
-  public ResponseEntity<?> find(@Valid @RequestBody(required = false) VehicleType vehicleType) {
-    if (vehicleType != null) {
-      return ResponseEntity.ok(service.findByName(vehicleType));
-    }
-    return ResponseEntity.ok(service.findAll());
-  }
 
   /** {@return created vehicle type id} */
   @PostMapping
