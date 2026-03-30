@@ -1,13 +1,32 @@
 # Changelog
 
-## [] - 30.03.2026
+## [v1.0-Release candidate] - 30.03.2026
+- Fixed tests. Persistence-impl uses `JdbcTest` and Business-logic tests
+relies on `SpringBootTest`
+- Implemented VehicleTypeController with public endpoint to fetch
+all vehicles or get exact by name
+- Implemented RegionController with public endpoint to fetch
+all regions or get exact by name
+- Renamed old VehicleTypeController to VehicleTypeAdminController
+- Renamed old RegionController to RegionAdminController
+- Renamed old MeasurementController to MeasurementAdminController
+- Moved LoginController and RegionController to /controller/client
+- **Made fee rules a bit flexier: vehicleTypeId is nullable, so
+that it is not needed to write for each vehicle a fee rule**
+- **TotalFeeRequest now accepts regionId and vehicleTypeId, to prevent
+mismatches. On frontend users will fetch all existing regions and
+vehicles, so using ids is better in that way**
+- Implemented changing *jwt token expiration time* via
+environmental variables
+- Modules are now not executable and follows best-practise of
+creating modules in Spring
 - Added validation of RequestBodies in REST controllers
-- Made fee rules and calculations more flexible - allowed
+- **Made fee rules and calculations more flexible - allowed
 vehicle type to be nullable, so that it is not necessary
-to write fee rule for each vehicle type
+to write fee rule for each vehicle type**
 - Implemented better error handling in DTOs using
 Jakarta annotations
-- Implemented WeatherPhenomenon wrapper instead of raw string
+- Implemented `WeatherPhenomenon` wrapper instead of raw string
 - Fixed tests not initializing
 
 ## [Unreleased] - 29.03.2026
