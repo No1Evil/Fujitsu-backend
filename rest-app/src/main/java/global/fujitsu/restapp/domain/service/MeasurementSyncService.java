@@ -40,18 +40,21 @@ public class MeasurementSyncService {
 
     // Checking regions if new ones were added or deleted
     refreshRegions();
-
     // Fetching xml and parsing
-    restTemplate.execute(url, HttpMethod.GET, null, response -> {
-      ArrayList<CreateMeasurementRequest> requests = null;
-      try {
-        requests = measurementParser.parse(response.getBody(), regionMap);
-      } catch (Exception e) {
-        throw new RuntimeException(e);
-      }
-      requests.forEach(measurementService::create);
-      return null;
-    });
+    if (!regionMap.isEmpty()) {
+      restTemplate.execute(url, HttpMethod.GET, null, response -> {
+        ArrayList<CreateMeasurementRequest> requests = null;
+        try {
+          requests = measurementParser.parse(response.getBody(), regionMap);
+        } catch (Exception e) {
+          throw new RuntimeException(e);
+        }
+        requests.forEach(measurementService::create);
+        return null;
+      });
+    } else {
+      log.debug("No sync as region map is empty");
+    }
   }
 
   /**
@@ -63,6 +66,7 @@ public class MeasurementSyncService {
     for (var region : regionService.findAll()) {
       String regionName = region.regionName().value();
       regionMap.put(regionName, region.id());
+      log.debug("Inserted region {} with id{}", regionName, region.id());
     }
   }
 }
