@@ -9,6 +9,7 @@ description = "REST API Controller"
 dependencies {
     implementation(project(":api:api-protocol"))
     implementation(project(":api:api-domain"))
+    implementation(project(":api:api-persistence"))
     implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:3.0.2")
     implementation("org.springframework.boot:spring-boot-starter-security-oauth2-authorization-server")
 

@@ -1,4 +1,4 @@
-package global.fujitsu.domain.mapper;
+package global.fujitsu.restapp.mapper;
 
 import global.fujitsu.api.entity.model.EntityModel;
 import global.fujitsu.api.model.dto.request.base.Request;

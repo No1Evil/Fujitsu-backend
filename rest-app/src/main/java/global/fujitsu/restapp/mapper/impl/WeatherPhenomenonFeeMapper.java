@@ -1,11 +1,11 @@
-package global.fujitsu.domain.mapper.impl;
+package global.fujitsu.restapp.mapper.impl;
 
 import global.fujitsu.api.entity.model.fee.WeatherPhenomenonFeeEntity;
 import global.fujitsu.api.model.dto.request.create.CreateWeatherPhenomenonFeeRequest;
 import global.fujitsu.api.model.dto.response.get.WeatherPhenomenonFeeResponse;
-import global.fujitsu.domain.mapper.RequestMapper;
-import global.fujitsu.domain.mapper.ResponseMapper;
 
+import global.fujitsu.restapp.mapper.RequestMapper;
+import global.fujitsu.restapp.mapper.ResponseMapper;
 import java.util.Objects;
 import org.springframework.stereotype.Component;
 
