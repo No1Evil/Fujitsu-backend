@@ -32,9 +32,13 @@ public class TotalFeeServiceImpl implements TotalFeeService {
 
   @Override
   public BigDecimal getTotalFee(Long regionId, Long vehicleTypeId, Instant timestamp) {
+    // Checking if vehicle and region exist.
+    var region = regionService.findById(regionId);
+    var vehicle = vehicleTypeService.findById(vehicleTypeId);
+
     var measurement = measurementService.find(regionId, timestamp);
 
-    return toTotalFeeResponse(
+    return totalFee(
         airTemperatureFeeService.getBaseFee(vehicleTypeId, measurement.airTemperature()),
         weatherPhenomenonFeeService.getBaseFee(vehicleTypeId, measurement.weatherPhenomenon()),
         regionalBasedFeeService.getBaseFee(vehicleTypeId, regionId),
@@ -42,7 +46,7 @@ public class TotalFeeServiceImpl implements TotalFeeService {
     );
   }
 
-  private static BigDecimal toTotalFeeResponse(@NonNull FeeResult... results) {
+  private static BigDecimal totalFee(@NonNull FeeResult... results) {
     BigDecimal total = BigDecimal.ZERO;
     for (FeeResult result : results) {
       total = total.add(result.fee());
