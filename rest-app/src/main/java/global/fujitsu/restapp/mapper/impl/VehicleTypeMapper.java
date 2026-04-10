@@ -3,35 +3,24 @@ package global.fujitsu.restapp.mapper.impl;
 import global.fujitsu.api.entity.model.vehicle.VehicleTypeEntity;
 import global.fujitsu.api.model.dto.request.create.CreateVehicleTypeRequest;
 import global.fujitsu.api.model.dto.response.get.VehicleTypeResponse;
-
 import global.fujitsu.restapp.mapper.RequestMapper;
 import global.fujitsu.restapp.mapper.ResponseMapper;
-import java.util.Objects;
-import org.springframework.stereotype.Component;
+import org.mapstruct.Mapper;
+import org.mapstruct.MappingConstants.ComponentModel;
 
 /**
  * Provides a mapper
  * from {@link CreateVehicleTypeRequest} to {@link VehicleTypeEntity}
  * and from {@link VehicleTypeEntity} to {@link VehicleTypeResponse}.
  */
-@Component
-public final class VehicleTypeMapper
-    implements ResponseMapper<VehicleTypeEntity, VehicleTypeResponse>,
+@Mapper(componentModel = ComponentModel.SPRING)
+public interface VehicleTypeMapper
+    extends ResponseMapper<VehicleTypeEntity, VehicleTypeResponse>,
     RequestMapper<VehicleTypeEntity, CreateVehicleTypeRequest> {
 
   @Override
-  public VehicleTypeEntity toEntity(CreateVehicleTypeRequest request) {
-    return new VehicleTypeEntity(
-        null,
-        request.vehicleType()
-    );
-  }
+  VehicleTypeEntity toEntity(CreateVehicleTypeRequest request);
 
   @Override
-  public VehicleTypeResponse toResponse(VehicleTypeEntity entityModel) {
-    return new VehicleTypeResponse(
-        Objects.requireNonNull(entityModel.id()),
-        entityModel.type()
-    );
-  }
+  VehicleTypeResponse toResponse(VehicleTypeEntity entityModel);
 }

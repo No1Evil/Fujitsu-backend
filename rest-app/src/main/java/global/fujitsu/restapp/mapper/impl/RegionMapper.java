@@ -5,33 +5,21 @@ import global.fujitsu.api.model.dto.request.create.CreateRegionRequest;
 import global.fujitsu.api.model.dto.response.get.RegionResponse;
 import global.fujitsu.restapp.mapper.RequestMapper;
 import global.fujitsu.restapp.mapper.ResponseMapper;
-import java.util.Objects;
-import org.springframework.stereotype.Component;
+import org.mapstruct.Mapper;
+import org.mapstruct.MappingConstants.ComponentModel;
 
 /**
  * Provides a mapper from {@link CreateRegionRequest} to {@link RegionEntity} and from
  * {@link RegionEntity} to {@link RegionResponse}.
  */
-@Component
-public final class RegionMapper
-    implements ResponseMapper<RegionEntity, RegionResponse>,
+@Mapper(componentModel = ComponentModel.SPRING)
+public interface RegionMapper
+    extends ResponseMapper<RegionEntity, RegionResponse>,
     RequestMapper<RegionEntity, CreateRegionRequest> {
 
   @Override
-  public RegionEntity toEntity(CreateRegionRequest request) {
-    return new RegionEntity(
-        null,
-        request.regionName(),
-        request.wmoCode()
-    );
-  }
+  RegionEntity toEntity(CreateRegionRequest request);
 
   @Override
-  public RegionResponse toResponse(RegionEntity entity) {
-    return new RegionResponse(
-        Objects.requireNonNull(entity.id()),
-        entity.name(),
-        entity.wmoCode()
-    );
-  }
+  RegionResponse toResponse(RegionEntity entity);
 }
