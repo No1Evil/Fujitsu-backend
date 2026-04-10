@@ -1,8 +1,8 @@
 package global.fujitsu.persistence.dao.impl.fee;
 
 import global.fujitsu.api.domain.model.fee.WindSpeedFeeEntity;
-import global.fujitsu.api.model.dto.request.get.GetWindSpeedFeeRequest;
-import global.fujitsu.api.model.fee.FeeResult;
+import global.fujitsu.api.protocol.dto.request.get.GetWindSpeedFeeRequest;
+import global.fujitsu.api.protocol.fee.FeeResult;
 import global.fujitsu.api.repository.fee.WindSpeedFeeRepository;
 import global.fujitsu.persistence.dao.base.BaseJdbcFeeBasedDao;
 import java.math.BigDecimal;

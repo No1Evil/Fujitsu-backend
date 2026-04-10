@@ -1,10 +1,10 @@
 package global.fujitsu.restapp.controller.admin.fee;
 
 import global.fujitsu.api.domain.service.fee.WindSpeedFeeService;
-import global.fujitsu.api.model.dto.request.create.CreateWindSpeedFeeRequest;
-import global.fujitsu.api.model.dto.request.get.GetWindSpeedFeeRequest;
-import global.fujitsu.api.model.dto.response.get.WindSpeedFeeResponse;
-import global.fujitsu.api.model.fee.FeeResult;
+import global.fujitsu.api.protocol.dto.request.create.CreateWindSpeedFeeRequest;
+import global.fujitsu.api.protocol.dto.request.get.GetWindSpeedFeeRequest;
+import global.fujitsu.api.protocol.dto.response.get.WindSpeedFeeResponse;
+import global.fujitsu.api.protocol.fee.FeeResult;
 import global.fujitsu.restapp.mapper.impl.WindSpeedFeeMapper;
 import io.swagger.v3.oas.annotations.Operation;
 import jakarta.validation.Valid;

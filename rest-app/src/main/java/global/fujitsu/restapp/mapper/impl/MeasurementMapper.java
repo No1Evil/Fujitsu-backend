@@ -1,8 +1,8 @@
 package global.fujitsu.restapp.mapper.impl;
 
 import global.fujitsu.api.domain.model.measurement.MeasurementEntity;
-import global.fujitsu.api.model.dto.request.create.CreateMeasurementRequest;
-import global.fujitsu.api.model.dto.response.get.MeasurementResponse;
+import global.fujitsu.api.protocol.dto.request.create.CreateMeasurementRequest;
+import global.fujitsu.api.protocol.dto.response.get.MeasurementResponse;
 import global.fujitsu.restapp.mapper.RequestMapper;
 import global.fujitsu.restapp.mapper.ResponseMapper;
 import org.mapstruct.Mapper;

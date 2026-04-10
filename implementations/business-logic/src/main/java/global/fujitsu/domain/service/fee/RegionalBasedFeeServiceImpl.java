@@ -4,7 +4,7 @@ import global.fujitsu.api.domain.exceptions.FeeNotFoundException;
 import global.fujitsu.api.domain.exceptions.RestrictedConditionException;
 import global.fujitsu.api.domain.model.fee.RegionalBasedFeeEntity;
 import global.fujitsu.api.domain.service.fee.RegionalBasedFeeService;
-import global.fujitsu.api.model.fee.FeeResult;
+import global.fujitsu.api.protocol.fee.FeeResult;
 import global.fujitsu.api.repository.fee.RegionalBasedFeeRepository;
 import java.util.List;
 import lombok.RequiredArgsConstructor;

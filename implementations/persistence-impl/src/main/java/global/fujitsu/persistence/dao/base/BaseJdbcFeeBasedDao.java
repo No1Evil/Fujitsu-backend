@@ -1,8 +1,7 @@
 package global.fujitsu.persistence.dao.base;
 
 import global.fujitsu.api.domain.model.fee.EntityFeeModel;
-import global.fujitsu.api.model.dto.request.base.GetFeeRequest;
-import global.fujitsu.api.model.fee.FeeResult;
+import global.fujitsu.api.protocol.fee.FeeResult;
 import global.fujitsu.api.repository.base.FeeRepository;
 import lombok.NonNull;
 import org.springframework.jdbc.core.JdbcTemplate;

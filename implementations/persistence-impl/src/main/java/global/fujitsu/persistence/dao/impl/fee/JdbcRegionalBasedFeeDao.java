@@ -1,8 +1,8 @@
 package global.fujitsu.persistence.dao.impl.fee;
 
 import global.fujitsu.api.domain.model.fee.RegionalBasedFeeEntity;
-import global.fujitsu.api.model.dto.request.get.GetRegionalBasedFeeRequest;
-import global.fujitsu.api.model.fee.FeeResult;
+import global.fujitsu.api.protocol.dto.request.get.GetRegionalBasedFeeRequest;
+import global.fujitsu.api.protocol.fee.FeeResult;
 import global.fujitsu.api.repository.fee.RegionalBasedFeeRepository;
 import global.fujitsu.persistence.dao.base.BaseJdbcFeeBasedDao;
 import lombok.NonNull;

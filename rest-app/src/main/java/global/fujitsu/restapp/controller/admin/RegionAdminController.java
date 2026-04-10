@@ -1,8 +1,8 @@
 package global.fujitsu.restapp.controller.admin;
 
 import global.fujitsu.api.domain.service.RegionService;
-import global.fujitsu.api.model.dto.request.create.CreateRegionRequest;
-import global.fujitsu.api.model.dto.response.get.RegionResponse;
+import global.fujitsu.api.protocol.dto.request.create.CreateRegionRequest;
+import global.fujitsu.api.protocol.dto.response.get.RegionResponse;
 import global.fujitsu.restapp.mapper.impl.RegionMapper;
 import io.swagger.v3.oas.annotations.Operation;
 import jakarta.validation.Valid;

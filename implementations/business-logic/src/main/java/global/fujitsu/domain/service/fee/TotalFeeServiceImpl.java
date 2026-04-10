@@ -8,7 +8,7 @@ import global.fujitsu.api.domain.service.fee.AirTemperatureFeeService;
 import global.fujitsu.api.domain.service.fee.RegionalBasedFeeService;
 import global.fujitsu.api.domain.service.fee.WeatherPhenomenonFeeService;
 import global.fujitsu.api.domain.service.fee.WindSpeedFeeService;
-import global.fujitsu.api.model.fee.FeeResult;
+import global.fujitsu.api.protocol.fee.FeeResult;
 import java.math.BigDecimal;
 import java.time.Instant;
 import lombok.NonNull;

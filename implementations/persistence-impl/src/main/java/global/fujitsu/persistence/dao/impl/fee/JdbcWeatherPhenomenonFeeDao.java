@@ -1,12 +1,11 @@
 package global.fujitsu.persistence.dao.impl.fee;
 
 import global.fujitsu.api.domain.model.fee.WeatherPhenomenonFeeEntity;
-import global.fujitsu.api.model.dto.request.get.GetWeatherPhenomenonFeeRequest;
-import global.fujitsu.api.model.fee.FeeResult;
+import global.fujitsu.api.protocol.dto.request.get.GetWeatherPhenomenonFeeRequest;
+import global.fujitsu.api.protocol.fee.FeeResult;
 import global.fujitsu.api.model.weather.WeatherPhenomenon;
 import global.fujitsu.api.repository.fee.WeatherPhenomenonFeeRepository;
 import global.fujitsu.persistence.dao.base.BaseJdbcFeeBasedDao;
-import java.math.BigDecimal;
 import lombok.NonNull;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.Resource;

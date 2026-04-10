@@ -1,10 +1,10 @@
 package global.fujitsu.restapp.controller.admin.fee;
 
 import global.fujitsu.api.domain.service.fee.RegionalBasedFeeService;
-import global.fujitsu.api.model.dto.request.create.CreateRegionalBasedFeeRequest;
-import global.fujitsu.api.model.dto.request.get.GetRegionalBasedFeeRequest;
-import global.fujitsu.api.model.dto.response.get.RegionalBasedFeeResponse;
-import global.fujitsu.api.model.fee.FeeResult;
+import global.fujitsu.api.protocol.dto.request.create.CreateRegionalBasedFeeRequest;
+import global.fujitsu.api.protocol.dto.request.get.GetRegionalBasedFeeRequest;
+import global.fujitsu.api.protocol.dto.response.get.RegionalBasedFeeResponse;
+import global.fujitsu.api.protocol.fee.FeeResult;
 import global.fujitsu.restapp.mapper.impl.RegionalBasedFeeMapper;
 import io.swagger.v3.oas.annotations.Operation;
 import jakarta.validation.Valid;

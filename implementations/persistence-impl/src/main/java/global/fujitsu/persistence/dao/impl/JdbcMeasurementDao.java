@@ -1,7 +1,6 @@
 package global.fujitsu.persistence.dao.impl;
 
 import global.fujitsu.api.domain.model.measurement.MeasurementEntity;
-import global.fujitsu.api.model.dto.request.get.GetMeasurementRequest;
 import global.fujitsu.api.repository.measurement.MeasurementRepository;
 import global.fujitsu.persistence.dao.base.BaseJdbcDao;
 import lombok.NonNull;

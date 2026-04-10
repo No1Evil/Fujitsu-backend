@@ -1,7 +1,7 @@
 package global.fujitsu.restapp.mapper;
 
 import global.fujitsu.api.domain.model.EntityModel;
-import global.fujitsu.api.model.dto.response.base.Response;
+import global.fujitsu.api.protocol.dto.response.base.Response;
 
 /**
  * Implements mapper from {@link EntityModel} to {@link Response}.

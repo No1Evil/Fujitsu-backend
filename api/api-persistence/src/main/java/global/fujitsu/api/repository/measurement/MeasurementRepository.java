@@ -1,10 +1,8 @@
 package global.fujitsu.api.repository.measurement;
 
 import global.fujitsu.api.domain.model.measurement.MeasurementEntity;
-import global.fujitsu.api.model.dto.request.get.GetMeasurementRequest;
 import global.fujitsu.api.repository.base.Repository;
 import java.time.Instant;
-import lombok.NonNull;
 
 import java.util.Optional;
 

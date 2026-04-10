@@ -3,7 +3,6 @@ package global.fujitsu.restapp.domain.service;
 import global.fujitsu.api.domain.model.measurement.MeasurementEntity;
 import global.fujitsu.api.domain.service.MeasurementService;
 import global.fujitsu.api.domain.service.RegionService;
-import global.fujitsu.api.model.dto.request.create.CreateMeasurementRequest;
 import global.fujitsu.restapp.domain.parser.MeasurementParser;
 import java.util.ArrayList;
 import java.util.Map;

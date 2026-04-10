@@ -1,7 +1,6 @@
 package global.fujitsu.restapp.domain.parser;
 
 import global.fujitsu.api.domain.model.measurement.MeasurementEntity;
-import global.fujitsu.api.model.dto.request.create.CreateMeasurementRequest;
 import global.fujitsu.api.model.weather.WeatherPhenomenon;
 import java.io.InputStream;
 import java.math.BigDecimal;

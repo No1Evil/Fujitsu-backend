@@ -4,7 +4,7 @@ import global.fujitsu.api.domain.exceptions.FeeNotFoundException;
 import global.fujitsu.api.domain.exceptions.RestrictedConditionException;
 import global.fujitsu.api.domain.model.fee.WeatherPhenomenonFeeEntity;
 import global.fujitsu.api.domain.service.fee.WeatherPhenomenonFeeService;
-import global.fujitsu.api.model.fee.FeeResult;
+import global.fujitsu.api.protocol.fee.FeeResult;
 import global.fujitsu.api.model.weather.WeatherPhenomenon;
 import global.fujitsu.api.repository.fee.WeatherPhenomenonFeeRepository;
 import java.util.List;

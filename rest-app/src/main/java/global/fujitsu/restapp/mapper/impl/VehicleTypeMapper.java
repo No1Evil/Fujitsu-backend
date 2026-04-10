@@ -1,8 +1,8 @@
 package global.fujitsu.restapp.mapper.impl;
 
 import global.fujitsu.api.domain.model.vehicle.VehicleTypeEntity;
-import global.fujitsu.api.model.dto.request.create.CreateVehicleTypeRequest;
-import global.fujitsu.api.model.dto.response.get.VehicleTypeResponse;
+import global.fujitsu.api.protocol.dto.request.create.CreateVehicleTypeRequest;
+import global.fujitsu.api.protocol.dto.response.get.VehicleTypeResponse;
 import global.fujitsu.restapp.mapper.RequestMapper;
 import global.fujitsu.restapp.mapper.ResponseMapper;
 import org.mapstruct.Mapper;

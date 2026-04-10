@@ -1,8 +1,8 @@
 package global.fujitsu.restapp.mapper.impl;
 
 import global.fujitsu.api.domain.model.region.RegionEntity;
-import global.fujitsu.api.model.dto.request.create.CreateRegionRequest;
-import global.fujitsu.api.model.dto.response.get.RegionResponse;
+import global.fujitsu.api.protocol.dto.request.create.CreateRegionRequest;
+import global.fujitsu.api.protocol.dto.response.get.RegionResponse;
 import global.fujitsu.restapp.mapper.RequestMapper;
 import global.fujitsu.restapp.mapper.ResponseMapper;
 import org.mapstruct.Mapper;

@@ -1,7 +1,7 @@
 package global.fujitsu.api.domain.model.fee;
 
 import global.fujitsu.api.domain.model.EntityModel;
-import global.fujitsu.api.model.fee.FeeResult;
+import global.fujitsu.api.protocol.fee.FeeResult;
 import java.math.BigDecimal;
 
 /**

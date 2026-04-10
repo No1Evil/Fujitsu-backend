@@ -1,8 +1,8 @@
 package global.fujitsu.api.repository.base;
 
 import global.fujitsu.api.domain.model.fee.EntityFeeModel;
-import global.fujitsu.api.model.dto.request.base.GetFeeRequest;
-import global.fujitsu.api.model.fee.FeeResult;
+import global.fujitsu.api.protocol.dto.request.base.GetFeeRequest;
+import global.fujitsu.api.protocol.fee.FeeResult;
 
 import java.util.Optional;
 

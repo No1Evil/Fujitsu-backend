@@ -2,9 +2,7 @@ package global.fujitsu.api.domain.service;
 
 import global.fujitsu.api.domain.model.measurement.MeasurementEntity;
 import global.fujitsu.api.domain.service.base.BaseService;
-import global.fujitsu.api.model.dto.request.create.CreateMeasurementRequest;
-import global.fujitsu.api.model.dto.request.get.GetMeasurementRequest;
-import global.fujitsu.api.model.dto.response.get.MeasurementResponse;
+import global.fujitsu.api.protocol.dto.request.get.GetMeasurementRequest;
 import java.time.Instant;
 
 /** Service for weather measurements. */

@@ -1,7 +1,7 @@
 package global.fujitsu.restapp.controller.client;
 
 import global.fujitsu.api.domain.service.VehicleTypeService;
-import global.fujitsu.api.model.dto.response.get.VehicleTypeResponse;
+import global.fujitsu.api.protocol.dto.response.get.VehicleTypeResponse;
 import global.fujitsu.api.domain.model.vehicle.VehicleType;
 import global.fujitsu.restapp.mapper.impl.VehicleTypeMapper;
 import java.util.List;

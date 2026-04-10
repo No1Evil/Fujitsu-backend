@@ -1,11 +1,10 @@
 package global.fujitsu.restapp.controller.admin.fee;
 
-import global.fujitsu.api.domain.model.fee.AirTemperatureFeeEntity;
 import global.fujitsu.api.domain.service.fee.AirTemperatureFeeService;
-import global.fujitsu.api.model.dto.request.create.CreateAirTemperatureFeeRequest;
-import global.fujitsu.api.model.dto.request.get.GetAirTemperatureFeeRequest;
-import global.fujitsu.api.model.dto.response.get.AirTemperatureFeeResponse;
-import global.fujitsu.api.model.fee.FeeResult;
+import global.fujitsu.api.protocol.dto.request.create.CreateAirTemperatureFeeRequest;
+import global.fujitsu.api.protocol.dto.request.get.GetAirTemperatureFeeRequest;
+import global.fujitsu.api.protocol.dto.response.get.AirTemperatureFeeResponse;
+import global.fujitsu.api.protocol.fee.FeeResult;
 import global.fujitsu.restapp.mapper.impl.AirTemperatureFeeMapper;
 import io.swagger.v3.oas.annotations.Operation;
 import jakarta.validation.Valid;

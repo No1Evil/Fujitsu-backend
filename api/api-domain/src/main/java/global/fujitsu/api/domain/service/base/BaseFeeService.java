@@ -1,10 +1,10 @@
 package global.fujitsu.api.domain.service.base;
 
 import global.fujitsu.api.domain.model.EntityModel;
-import global.fujitsu.api.model.dto.request.base.CreateRequest;
-import global.fujitsu.api.model.dto.request.base.GetFeeRequest;
-import global.fujitsu.api.model.dto.response.base.GetResponse;
-import global.fujitsu.api.model.fee.FeeResult;
+import global.fujitsu.api.protocol.dto.request.base.CreateRequest;
+import global.fujitsu.api.protocol.dto.request.base.GetFeeRequest;
+import global.fujitsu.api.protocol.dto.response.base.GetResponse;
+import global.fujitsu.api.protocol.fee.FeeResult;
 
 /**
  * Provides a base fee service for fee calculations.

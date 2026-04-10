@@ -1,8 +1,8 @@
 package global.fujitsu.restapp.controller.client;
 
 import global.fujitsu.api.domain.service.TotalFeeService;
-import global.fujitsu.api.model.dto.request.get.TotalFeeRequest;
-import global.fujitsu.api.model.dto.response.get.TotalFeeResponse;
+import global.fujitsu.api.protocol.dto.request.get.TotalFeeRequest;
+import global.fujitsu.api.protocol.dto.response.get.TotalFeeResponse;
 import jakarta.validation.Valid;
 import java.math.BigDecimal;
 import lombok.RequiredArgsConstructor;

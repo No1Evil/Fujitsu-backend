@@ -1,8 +1,8 @@
 package global.fujitsu.restapp.mapper.impl;
 
 import global.fujitsu.api.domain.model.fee.RegionalBasedFeeEntity;
-import global.fujitsu.api.model.dto.request.create.CreateRegionalBasedFeeRequest;
-import global.fujitsu.api.model.dto.response.get.RegionalBasedFeeResponse;
+import global.fujitsu.api.protocol.dto.request.create.CreateRegionalBasedFeeRequest;
+import global.fujitsu.api.protocol.dto.response.get.RegionalBasedFeeResponse;
 import global.fujitsu.restapp.mapper.RequestMapper;
 import global.fujitsu.restapp.mapper.ResponseMapper;
 import org.mapstruct.Mapper;

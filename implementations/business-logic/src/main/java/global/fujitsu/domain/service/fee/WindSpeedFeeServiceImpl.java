@@ -4,7 +4,7 @@ import global.fujitsu.api.domain.exceptions.FeeNotFoundException;
 import global.fujitsu.api.domain.exceptions.RestrictedConditionException;
 import global.fujitsu.api.domain.model.fee.WindSpeedFeeEntity;
 import global.fujitsu.api.domain.service.fee.WindSpeedFeeService;
-import global.fujitsu.api.model.fee.FeeResult;
+import global.fujitsu.api.protocol.fee.FeeResult;
 import global.fujitsu.api.repository.fee.WindSpeedFeeRepository;
 import java.math.BigDecimal;
 import java.util.List;

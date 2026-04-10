@@ -1,10 +1,10 @@
 package global.fujitsu.restapp.controller.admin.fee;
 
 import global.fujitsu.api.domain.service.fee.WeatherPhenomenonFeeService;
-import global.fujitsu.api.model.dto.request.create.CreateWeatherPhenomenonFeeRequest;
-import global.fujitsu.api.model.dto.request.get.GetWeatherPhenomenonFeeRequest;
-import global.fujitsu.api.model.dto.response.get.WeatherPhenomenonFeeResponse;
-import global.fujitsu.api.model.fee.FeeResult;
+import global.fujitsu.api.protocol.dto.request.create.CreateWeatherPhenomenonFeeRequest;
+import global.fujitsu.api.protocol.dto.request.get.GetWeatherPhenomenonFeeRequest;
+import global.fujitsu.api.protocol.dto.response.get.WeatherPhenomenonFeeResponse;
+import global.fujitsu.api.protocol.fee.FeeResult;
 import global.fujitsu.restapp.mapper.impl.WeatherPhenomenonFeeMapper;
 import io.swagger.v3.oas.annotations.Operation;
 import jakarta.validation.Valid;
