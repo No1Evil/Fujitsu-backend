@@ -1,3 +1,5 @@
+This is one of my early educational projects. The code here is outdated and does not reflect my current skills or knowledge of design patterns and clean code principles. I keep it here solely to track my progress.
+
 # Fujitsu-backend
 
 Navigation
